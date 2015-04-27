@@ -815,11 +815,11 @@
                     "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。"
                 },
                 "createTime": {
-                    "type": "time_t",
+                    "type": "integer",
                     "description": "创建时间。注：创建/更新时忽略请求中的该项参数。"
                 },
                 "updateTime": {
-                    "type": "time_t",
+                    "type": "integer",
                     "description": "更新时间。注：创建/更新时忽略请求中的该项参数。"
                 }
             }
