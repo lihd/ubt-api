@@ -1,360 +1,897 @@
 {
-  "swagger": "2.0",
-  "info": {
-    "title": "UBT API",
-    "description": "UBT项目接口说明",
-    "version": "1.0.0"
-  },
-  "host": "t.u2wifi.cn",
-  "schemes": [
-    "http"
-  ],
-  "basePath": "/",
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
-  "paths": {
-    "/oauth2/access_token": {
-      "post": {
-        "summary": "用户登录",
-        "description": "用户使用用户名及密码进行登录，获取调用接口的access_token",
-        "consumes": [
-          "application/x-www-form-urlencoded"
-        ],
-        "produces": [
-          "application/json"
-        ],
-        "parameters": [
-          {
-            "name": "client_id",
-            "in": "formData",
-            "description": "应用标识",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "000017953450251798098136"
-            ]
-          },
-          {
-            "name": "client_secret",
-            "in": "formData",
-            "description": "应用密钥",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "08E9EC6793345759456CB8BAE52615F3"
-            ]
-          },
-          {
-            "name": "grant_type",
-            "in": "formData",
-            "description": "授权类型,<br/> 首次登录使用'password', token过期之后使用refresh token申请新token时使用'refresh_token'",
-            "required": true,
-            "type": "string",
-            "enum": [
-              "password",
-              "refresh_token"
-            ]
-          },
-          {
-            "name": "refresh_token",
-            "in": "formData",
-            "description": "刷新令牌，grant_type='refresh_token' 时必填",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "username",
-            "in": "formData",
-            "description": "用户名, grant_type='password' 时必填",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "password",
-            "in": "formData",
-            "description": "密码。 用户名, grant_type='password' 时必填 <br/>注意：密码字段采用特殊规则生成，详见密码类型字段的说明. <br/>如果密码类型为1或2，不校验picId和varificationCode字段，不推荐使用这种方式。 <br/>如果密码类型为3（默认），则要求提供picId和varificationCode字段。",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "language",
-            "in": "formData",
-            "description": "国际化字段, 1: 英文, 2: 中文",
-            "required": false,
-            "type": "string",
-            "format": "int32",
-            "default": 2,
-            "enum": [
-              1,
-              2
-            ]
-          },
-          {
-            "name": "password_type",
-            "in": "formData",
-            "description": "密码类型，默认为3。<br/> 采用不同密码类型，密码的生成规则为：<br/> 1：明文P。<br/> 2：安全密码。明文P经过MD5运算的结果，即MD5(P)；<br/> 3：验证码保护的安全密码。MD5( MD5(P), PID )，其中PID为验证码的标识。",
-            "required": false,
-            "type": "string",
-            "format": "int32",
-            "default": 3,
-            "enum": [
-              1,
-              2,
-              3
-            ]
-          },
-          {
-            "name": "picId",
-            "in": "formData",
-            "description": "验证码图片的标识",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "varificationCode",
-            "in": "formData",
-            "description": "用户输入的验证码，注：单词verification拼写有误，历史遗留故不作修正。",
-            "required": false,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "token",
-            "schema": {
-              "$ref": "#/definitions/Token"
-            },
-            "examples": {
-              "expires_in": 3600,
-              "refresh_token": "12195868a56e1e76076c5bf50c008c51",
-              "access_token": "1db9a6ccdc06c6d71321502cb33c2c02"
-            }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
+    "swagger": "2.0",
+    "info": {
+        "title": "UBT API",
+        "description": "UBT项目接口说明",
+        "version": "1.0.0"
     },
-    "/api/access_token/org_mgr": {
-      "get": {
-        "summary": "超级管理员越权令牌",
-        "description": "超级管理员越权时，需拿到机构管理员的访问令牌",
-        "parameters": [
-          {
-            "name": "access_token",
-            "in": "query",
-            "description": "OAuth2授权后获得",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "oid",
-            "in": "query",
-            "description": "公司标识。",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "token",
-            "schema": {
-              "$ref": "#/definitions/Token"
-            }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "api2/organizations": {
-      "get": {
-        "summary": "获取机构列表",
-        "parameters": [
-          {
-            "name": "access_token",
-            "in": "query",
-            "description": "OAuth2授权后获得",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "verbose",
-            "in": "query",
-            "description": "信息详细级别",
-            "required": false,
-            "type": "integer",
-            "default": 1
-          },
-          {
-            "name": "cursor",
-            "in": "query",
-            "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
-            "required": false,
-            "type": "integer",
-            "default": 1
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "每次请求返回的条目数量",
-            "required": false,
-            "type": "integer",
-            "default": 30
-          },
-          {
-            "name": "name",
-            "in": "query",
-            "description": "要查找的名称",
-            "required": false,
-            "type": "string"
-          },
-          {
-            "name": "state",
-            "in": "query",
-            "description": "公司状态",
-            "required": false,
-            "type": "integer"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "机构列表",
-            "schema": {
-              "title": "OrganizationList",
-              "description": "机构列表信息",
-              "type": "object",
-              "properties": {
-                "total": {
-                  "description": "结果总数",
-                  "type": "integer"
-                },
-                "cursor": {
-                  "description": "游标。表示从结果的第几条开始",
-                  "type": "integer"
-                },
-                "limit": {
-                  "description": "返回的结果数目",
-                  "type": "integer"
-                },
-                "result": {
-                  "type": "array",
-                  "description": "机构数组",
-                  "items": {
-                    "$ref": "#/definitions/Organization"
-                  }
+    "host": "t.u2wifi.cn",
+    "schemes": [
+        "http"
+    ],
+    "basePath": "/",
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/oauth2/access_token": {
+            "post": {
+                "summary": "用户登录",
+                "description": "用户使用用户名及密码进行登录，获取调用接口的access_token",
+                "tags": [
+                    "Login"
+                ],
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "应用标识",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "000017953450251798098136"
+                        ]
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "应用密钥",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "08E9EC6793345759456CB8BAE52615F3"
+                        ]
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "授权类型,<br/> 首次登录使用'password', token过期之后使用refresh token申请新token时使用'refresh_token'",
+                        "required": true,
+                        "type": "string",
+                        "enum": [
+                            "password",
+                            "refresh_token"
+                        ]
+                    },
+                    {
+                        "name": "refresh_token",
+                        "in": "formData",
+                        "description": "刷新令牌，grant_type='refresh_token' 时必填",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "用户名, grant_type='password' 时必填",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "密码。 用户名, grant_type='password' 时必填 <br/>注意：密码字段采用特殊规则生成，详见密码类型字段的说明. <br/>如果密码类型为1或2，不校验picId和varificationCode字段，不推荐使用这种方式。 <br/>如果密码类型为3（默认），则要求提供picId和varificationCode字段。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "language",
+                        "in": "formData",
+                        "description": "国际化字段, 1: 英文, 2: 中文",
+                        "required": false,
+                        "type": "string",
+                        "format": "int32",
+                        "default": 2,
+                        "enum": [
+                            1,
+                            2
+                        ]
+                    },
+                    {
+                        "name": "password_type",
+                        "in": "formData",
+                        "description": "密码类型，默认为3。<br/> 采用不同密码类型，密码的生成规则为：<br/> 1：明文P。<br/> 2：安全密码。明文P经过MD5运算的结果，即MD5(P)；<br/> 3：验证码保护的安全密码。MD5( MD5(P), PID )，其中PID为验证码的标识。",
+                        "required": false,
+                        "type": "string",
+                        "format": "int32",
+                        "default": 3,
+                        "enum": [
+                            1,
+                            2,
+                            3
+                        ]
+                    },
+                    {
+                        "name": "picId",
+                        "in": "formData",
+                        "description": "验证码图片的标识",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "varificationCode",
+                        "in": "formData",
+                        "description": "用户输入的验证码",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
                 }
-              },
-              "required": ["id"]
             }
-          },
-          "default": {
-            "description": "Unexpected error",
-            "schema": {
-              "$ref": "#/definitions/Error"
+        },
+        "/api/access_token/org_mgr": {
+            "get": {
+                "summary": "超级管理员越权令牌",
+                "description": "超级管理员越权时，需拿到机构管理员的访问令牌",
+                "tags": [
+                    "Login"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
             }
-          }
-        }
-      }
-    }
-  },
-  "definitions": {
-    "Token": {
-      "properties": {
-        "access_token": {
-          "type": "string",
-          "description": "访问令牌"
         },
-        "refresh_token": {
-          "type": "string",
-          "description": "刷新令牌"
+        "/api2/organizations": {
+            "get": {
+                "summary": "获取公司列表",
+                "description": "获取公司列表",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的名称。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "公司状态。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organizationn"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "创建公司",
+                "description": "创建公司",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organizationn"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         },
-        "expires_ins": {
-          "type": "integer",
-          "description": "过期时间(秒)"
+        "/api2/organizations/$ID": {
+            "delete": {
+                "summary": "删除指定的公司",
+                "description": "删除指定的公司",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "公司标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organization"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "更新指定公司的信息",
+                "description": "更新指定公司的信息",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "公司标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别",
+                        "required": false,
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organization"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "获取指定公司的信息",
+                "description": "获取指定公司的信息",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "公司标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别",
+                        "required": false,
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organization"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tags": {
+            "get": {
+                "summary": "获取分组列表",
+                "description": "获取分组列表",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的名称。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "shared",
+                        "in": "query",
+                        "description": "分组是否共享。",
+                        "required": false,
+                        "type": "boolean"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "创建分组",
+                "description": "创建分组",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tags/$ID": {
+            "delete": {
+                "summary": "删除分组",
+                "description": "删除指定的分组",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "更新分组信息",
+                "description": "更新指定的分组信息",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "获取分组信息",
+                "description": "获取指定分组的信息",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "query",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/resource_tags": {
+            "get": {
+                "summary": "查询资源的分组列表",
+                "description": "查找指定资源标识的分组",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resource_type",
+                        "in": "query",
+                        "description": "资源类型。表示查询指定资源类型的分组列表。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "query",
+                        "description": "资源标识。与resource_type二选一。查询指定资源的分组列表。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "查询批量资源的分组列表",
+                "description": "查询批量资源的分组列表",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "token",
+                        "schema": {
+                            "$ref": "#/definitions/Token"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
-      }
     },
-    "Organization": {
-      "properties": {
-        "_id": {
-          "type": "string",
-          "description": "机构标识"
+    "definitions": {
+        "Token": {
+            "properties": {
+                "access_token": {
+                    "type": "string",
+                    "description": "访问令牌"
+                },
+                "refresh_token": {
+                    "type": "string",
+                    "description": "刷新令牌"
+                },
+                "expires_ins": {
+                    "type": "integer",
+                    "description": "过期时间(秒)"
+                }
+            }
         },
-        "name": {
-          "type": "string",
-          "description": "机构名称"
+        "Tags": {
+            "properties": {
+                "oid": {
+                    "type": "string",
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": "机型标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "分组名称"
+                },
+                "shared": {
+                    "type": "boolean",
+                    "description": "是否共享。"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "createTime": {
+                    "type": "time_t",
+                    "description": "创建时间。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "updateTime": {
+                    "type": "time_t",
+                    "description": "更新时间。注：创建/更新时忽略请求中的该项参数。"
+                }
+            }
         },
-        "website": {
-          "type": "string",
-          "description": "机构主页"
+        "Organization": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "机构标识"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "机构名称"
+                },
+                "website": {
+                    "type": "string",
+                    "description": "机构主页"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "机构拥有者邮箱"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "状态"
+                },
+                "approveTime": {
+                    "type": "integer",
+                    "description": "审核通过时间, UnixTime"
+                },
+                "TEL": {
+                    "type": "integer",
+                    "description": "电话号码"
+                },
+                "fax": {
+                    "type": "string",
+                    "description": "传真号码"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "地址"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "拥有者标识"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "创建者用户名"
+                },
+                "createTime": {
+                    "type": "integer",
+                    "description": "创建时间, UnixTime"
+                },
+                "updateTime": {
+                    "type": "integer",
+                    "description": "更新时间, UnixTime"
+                }
+            }
         },
-        "email": {
-          "type": "string",
-          "description": "机构拥有者邮箱"
-        },
-        "state": {
-          "type": "string",
-          "description": "状态"
-        },
-        "approveTime": {
-          "type": "integer",
-          "description": "审核通过时间, UnixTime"
-        },
-        "TEL": {
-          "type": "integer",
-          "description": "电话号码"
-        },
-        "fax": {
-          "type": "string",
-          "description": "传真号码"
-        },
-        "address": {
-          "type": "string",
-          "description": "地址"
-        },
-        "owner": {
-          "type": "string",
-          "description": "拥有者标识"
-        },
-        "creator": {
-          "type": "string",
-          "description": "创建者用户名"
-        },
-        "createTime": {
-          "type": "integer",
-          "description": "创建时间, UnixTime"
-        },
-        "updateTime": {
-          "type": "integer",
-          "description": "更新时间, UnixTime"
+        "Error": {
+            "properties": {
+                "request": {
+                    "type": "string"
+                },
+                "error": {
+                    "type": "string"
+                },
+                "error_code": {
+                    "type": "integer"
+                }
+            }
         }
-      }
-    },
-    "Error": {
-      "properties": {
-        "request": {
-          "type": "string"
-        },
-        "error": {
-          "type": "string"
-        },
-        "error_code": {
-          "type": "integer"
-        }
-      }
     }
-  }
 }
