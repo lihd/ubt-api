@@ -16,6 +16,8 @@ paths:
     post:
       summary: 用户登录
       description: 用户使用用户名及密码进行登录，获取调用接口的access_token
+      tags: 
+        -  Login
       consumes:
         - application/x-www-form-urlencoded
       produces:
@@ -102,6 +104,8 @@ paths:
     get:
       summary: 超级管理员越权令牌
       description: 超级管理员越权时，需拿到机构管理员的访问令牌
+      tags:
+        - Login
       parameters:
         - name: access_token
           in: query
@@ -122,6 +126,413 @@ paths:
           description: Unexpected error
           schema:
             $ref: "#/definitions/Error"
+  /api2/organizations:
+    get:
+      summary: 获取公司列表
+      description: 获取公司列表
+      tags:
+        - Organization
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth2授权后获得
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int
+        - name: cursor
+          in: query
+          description: 游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。
+          required: false
+          type: int
+        - name: limit
+          in: query
+          description: 每次请求返回的条目数量。
+          required: false
+          type: int
+        - name: name
+          in: query
+          description: 要查找的名称。
+          required: false
+          type: string
+        - name: state
+          in: query
+          description: 公司状态。
+          required: false
+          type: string
+          
+      responses:
+        "200":
+          description:  Organization
+          schema:
+            $ref: "#/definitions/Organizationn"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+    post:
+      summary: 创建公司
+      description: 创建公司
+      tags:
+        - Organization
+      parameters:
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int
+      responses:
+        "200":
+          description:  Organization
+          schema:
+            $ref: "#/definitions/Organizationn"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /api2/organizations/$ID:
+    delete:
+      summary: 删除指定的公司
+      description: 删除指定的公司
+      tags:
+        - Organization
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: $ID
+          in: query
+          description: 公司标识。
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Organization
+          schema:
+            $ref: "#/definitions/Organization"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error" 
+    put:
+      summary: 更新指定公司的信息
+      description: 更新指定公司的信息
+      tags:
+        - Organization
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: $ID
+          in: query
+          description: 公司标识。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别
+          required: false
+          type: int
+      responses:
+        "200":
+          description: Organization
+          schema:
+            $ref: "#/definitions/Organization"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+    get:
+      summary: 获取指定公司的信息
+      description: 获取指定公司的信息
+      tags:
+        - Organization
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: $ID
+          in: query
+          description: 公司标识。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别
+          required: false
+          type: int
+      responses:
+        "200":
+          description: Organization
+          schema:
+            $ref: "#/definitions/Organization"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+  /api/tags:
+    get:
+      summary: 获取分组列表
+      description: 获取分组列表
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+        - name: cursor
+          in: query
+          description: 游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。
+          required: false
+          type: int
+        - name: limit
+          in: query
+          description: 每次请求返回的条目数量。
+          required: false
+          type: int
+        - name: name
+          in: query 
+          description: 要查找的名称。
+          required: false
+          type: string
+        - name: shared
+          in: query
+          description: 分组是否共享。
+          required: false
+          type: boolean
+          
+      responses:
+        "200":
+          description: Tags
+          schema:
+            $ref: "#/definitions/Tags"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"  
+    post:
+      summary: 创建分组
+      description: 创建分组
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+      responses:
+        "200":
+          description: Tags
+          schema:
+            $ref: "#/definitions/Tags"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error" 
+  /api/tags/$ID:
+    delete:
+      summary: 删除分组
+      description: 删除指定的分组
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+        - name: $ID
+          in: query
+          description: 分组标识。
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Tags
+          schema:
+            $ref: "#/definitions/Tags"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"  
+    put:
+      summary: 更新分组信息
+      description: 更新指定的分组信息
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int  
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+        - name: $ID
+          in: query
+          description: 分组标识。
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Tags
+          schema:
+            $ref: "#/definitions/Tags"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"  
+    get:
+      summary: 获取分组信息
+      description: 获取指定分组的信息
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: verbose
+          in: query
+          description: 信息详细级别。
+          required: false
+          type: int  
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+        - name: $ID
+          in: query
+          description: 分组标识。
+          required: true
+          type: string
+      responses:
+        "200":
+          description: Tags
+          schema:
+            $ref: "#/definitions/Tags"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error" 
+  /api/resource_tags:
+    get:
+      summary: 查询资源的分组列表
+      description: 查找指定资源标识的分组
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth2授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+        - name: resource_type
+          in: query
+          description: 资源类型。表示查询指定资源类型的分组列表。
+          required: false
+          type: int
+        - name: resource_id
+          in: query
+          description: 资源标识。与resource_type二选一。查询指定资源的分组列表。
+          required: false
+          type: string
+        - name: cursor
+          in: query
+          description: 游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。
+          required: false
+          type: int
+        - name: limit
+          in: query
+          description: 每次请求返回的条目数量。
+          required: false
+          type: int
+      responses:
+        "200":
+          description: token
+          schema:
+            $ref: "#/definitions/Token"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"
+    post:
+      summary: 查询批量资源的分组列表
+      description: 查询批量资源的分组列表
+      tags:
+        - Tags
+      parameters:
+        - name: access_token
+          in: query
+          description: OAuth2授权后获得。注：通过HTTP认证头携带时省略。
+          required: true
+          type: string
+        - name: oid
+          in: query
+          description: 公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。
+          required: false
+          type: string
+      responses:
+        "200":
+          description: token
+          schema:
+            $ref: "#/definitions/Token"
+        default:
+          description: Unexpected error
+          schema:
+            $ref: "#/definitions/Error"       
 definitions:
   Token:
     properties:
@@ -134,6 +545,29 @@ definitions:
       expires_ins:
         type: integer
         description: 过期时间(秒)
+  Tags:
+    properties:
+      oid:
+        type: string
+        description: 公司标识。注：创建/更新时忽略请求中的该项参数。
+      _id:
+        type: string
+        description: 机型标识。注：创建/更新时忽略请求中的该项参数。
+      name:
+        type: string
+        description: 分组名称
+      shared:
+        type: boolean
+        description: 是否共享。
+      owner:
+        type: string
+        description: 拥有者标识。注：创建/更新时忽略请求中的该项参数。
+      createTime:
+        type: time_t
+        description: 创建时间。注：创建/更新时忽略请求中的该项参数。
+      updateTime:
+        type: time_t
+        description: 更新时间。注：创建/更新时忽略请求中的该项参数。
   Organization:
       properties:
         _id:
