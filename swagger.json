@@ -723,9 +723,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "token",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Token"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -760,9 +760,300 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "token",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Token"
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "对批量资源添加分组",
+                "description": "对指定的批量资源打上指定分组。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tag_id",
+                        "in": "query",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "summary": "删除资源分组",
+                "description": "删除指定资源的一个分组。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resource_id",
+                        "in": "query",
+                        "description": "资源标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tag_id",
+                        "in": "query",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tags/$ID/resources": {
+            "get": {
+                "summary": "查询分组的所有资源",
+                "description": "查找指定分组的资源。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resource_type",
+                        "in": "query",
+                        "description": "资源类型。表示查询指定资源类型的分组列表。",
+                        "required": false,
+                        "type": "int"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "分组标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "int"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/resources_multiple_tags": {
+            "post": {
+                "summary": "对批量资源添加批量分组",
+                "description": "对指定的批量资源打上指定批量分组。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "删除批量资源的批量分组",
+                "description": "删除指定的批量资源上指定的批量分组。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/device_tags": {
+            "get": {
+                "summary": "获取设备分组列表",
+                "description": "获取资源类型为设备的分组列表。",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -877,6 +1168,17 @@
                 "updateTime": {
                     "type": "integer",
                     "description": "更新时间, UnixTime"
+                }
+            }
+        },
+        "Devices": {
+            "properties": {
+                "oid": {
+                    "type": "string",
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "_id": {
+                    "type": "string"
                 }
             }
         },
