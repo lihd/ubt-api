@@ -1932,6 +1932,582 @@
                     }
                 }
             }
+        },
+        "/api/sites": {
+            "get": {
+                "summary": "获取车辆列表",
+                "description": "获取车辆列表。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的名称。",
+                        "requird": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "要查找的地址。",
+                        "requird": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "online",
+                        "in": "query",
+                        "description": "是否在线。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "has_gateway",
+                        "in": "query",
+                        "description": "是否有设备。",
+                        "requird": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "business_state",
+                        "in": "query",
+                        "description": "业务状态.",
+                        "requird": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "requird": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "创建车辆",
+                "description": "创建车辆。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "siteInfo",
+                        "in": "body",
+                        "description": "车辆信息",
+                        "required": true,
+                        "type": "object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sites/list": {
+            "post": {
+                "summary": "获取车辆列表",
+                "description": "通过分组获取分组下的列表时使用此API。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的名称。",
+                        "requird": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "online",
+                        "in": "query",
+                        "description": "是否在线。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "has_gateway",
+                        "in": "query",
+                        "description": "是否有设备。",
+                        "requird": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "requird": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "对应资源ID",
+                        "required": true,
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sites/list/device_alias": {
+            "post": {
+                "summary": "批量转换设备列表",
+                "description": "批量转换设备的别名。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sites/overview": {
+            "post": {
+                "summary": "获取车辆列表",
+                "description": "通过分组获取分组下的列表时使用此API。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "资源对应ID。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sites/$ID": {
+            "delete": {
+                "summary": "删除车辆",
+                "description": "删除指定的车辆。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "车辆标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "delete_all",
+                        "in": "query",
+                        "description": "为1时删除车辆下所有的设备。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "更新指定车辆的信息",
+                "description": "更新指定车辆的信息。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "车辆标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "siteInfo",
+                        "in": "body",
+                        "description": "车辆信息",
+                        "required": true,
+                        "type": "object"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "获取指定车辆的信息",
+                "description": "获取指定车辆的信息。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "车辆标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sites/count/$ID": {
+            "get": {
+                "summary": "获取指定车辆的设备总数信息",
+                "description": "获取指定车辆的设备总数信息。",
+                "tags": [
+                    "Sites"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "车辆标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sites",
+                        "schema": {
+                            "$ref": "#/definitions/Sites"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2294,6 +2870,104 @@
                 "mbIp": {
                     "type": "string",
                     "description": "串口ip"
+                }
+            }
+        },
+        "Sites": {
+            "properties": {
+                "oid": {
+                    "type": "string",
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": "机型标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "设备名称"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "安装地址"
+                },
+                "customerId": {
+                    "type": "string",
+                    "description": "所属客户"
+                },
+                "location": {
+                    "type": "object",
+                    "description": "位置信息",
+                    "properties": {
+                        "region": {
+                            "type": "string"
+                        },
+                        "longitude": {
+                            "type": "number"
+                        },
+                        "latitude": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "contact": {
+                    "type": "object",
+                    "description": "联系人信息",
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "businessState": {
+                    "type": "integer",
+                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修"
+                },
+                "online": {
+                    "type": "integer",
+                    "description": "联网状态 0:离线 1在线（由设备主动上报）参见设备动态信息数据结构定义"
+                },
+                "isMyFavorites": {
+                    "type": "integer",
+                    "description": "1已收藏 0未收藏 注：创建/更新时忽略请求中的该项参数。"
+                },
+                "alarmCount": {
+                    "type": "integer",
+                    "description": "报警数量 注：创建/更新时忽略请求中的该项参数。"
+                },
+                "icon": {
+                    "type": "string",
+                    "description": "车辆图标，默认为设备图标"
+                },
+                "descriptions": {
+                    "type": "string",
+                    "description": "描述信息。"
+                },
+                "pics": {
+                    "type": "string",
+                    "description": "车辆图片文件的id列表"
+                },
+                "views": {
+                    "type": "string",
+                    "description": "展示视图列表"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "创建时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "更新时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
                 }
             }
         },
