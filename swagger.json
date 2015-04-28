@@ -1124,6 +1124,814 @@
                     }
                 }
             }
+        },
+        "/api/devices": {
+            "get": {
+                "summary": "获取设备列表",
+                "description": "获取设备列表。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的设备名称。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "online",
+                        "in": "query",
+                        "description": "是否在线",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "site_id",
+                        "in": "query",
+                        "description": "要查找的车辆标识",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "site_name",
+                        "in": "query",
+                        "description": "要查找的车辆名称",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "要查找为此机型的设备",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "serial_number",
+                        "in": "query",
+                        "description": "要查找的设备序列号",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "要查找的地址",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "business_state",
+                        "in": "query",
+                        "description": "业务状态 0：建设 1：投运 2：故障 3：检修 （查询多个状态时之间用“，”逗号隔开。如“1,0”“1,2”）",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "创建设备",
+                "description": "创建设备",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "create_site",
+                        "in": "query",
+                        "description": "若create_site=1 且$DeviceInfo里面无车辆信息。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/list": {
+            "post": {
+                "summary": "获取设备列表",
+                "description": "获取设备列表。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的设备名称。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "online",
+                        "in": "query",
+                        "description": "是否在线",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "site_id",
+                        "in": "query",
+                        "description": "要查找的车辆标识",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "site_name",
+                        "in": "query",
+                        "description": "要查找的车辆名称",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "要查找为此机型的设备",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "serial_number",
+                        "in": "query",
+                        "description": "要查找的设备序列号",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "要查找的地址",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "business_state",
+                        "in": "query",
+                        "description": "业务状态 0：建设 1：投运 2：故障 3：检修 （查询多个状态时之间用“，”逗号隔开。如“1,0”“1,2”）",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/overview": {
+            "post": {
+                "summary": "获取设备列表",
+                "description": "通过分组获取分组下的列表时使用此API。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/batch_get": {
+            "post": {
+                "summary": "获取多个车辆下的设备列表",
+                "description": "获取多个车辆下的设备列表。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的设备名称。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "online",
+                        "in": "query",
+                        "description": "是否在线",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "plc_id",
+                        "in": "query",
+                        "description": "是否是设备（plc_id=0为设备）",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "model",
+                        "in": "query",
+                        "description": "要查找为此机型的设备",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "serial_number",
+                        "in": "query",
+                        "description": "要查找的设备序列号",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "address",
+                        "in": "query",
+                        "description": "要查找的地址",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "business_state",
+                        "in": "query",
+                        "description": "业务状态 0：建设 1：投运 2：故障 3：检修 （查询多个状态时之间用“，”逗号隔开。如“1,0”“1,2”）",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "end_time",
+                        "in": "query",
+                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/batch_add": {
+            "post": {
+                "summary": "批量创建设备",
+                "description": "批量创建设备。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "create_site",
+                        "in": "query",
+                        "description": "若携带此参数且值为1则会为每一个设备创建一个默认的车辆，否则创建无车辆的设备",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "query",
+                        "description": "批量导入数据文件",
+                        "requird": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/batch_update": {
+            "post": {
+                "summary": "批量编辑设备",
+                "description": "批量编辑设备。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "file_id",
+                        "in": "query",
+                        "description": "批量导入数据文件",
+                        "requird": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/batch_delete": {
+            "post": {
+                "summary": "批量删除设备",
+                "description": "批量删除设备。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "设备对应的资源ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/$ID": {
+            "delete": {
+                "summary": "删除设备",
+                "description": "删除设备。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "设备标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "更新设备信息",
+                "description": "更新设备信息。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "设备标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "cancel_site",
+                        "in": "query",
+                        "description": "cancel_site =1 则将此设备移除之前所在车辆",
+                        "requeired": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "获取设备信息",
+                "description": "获取设备信息。",
+                "tags": [
+                    "Devices"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "$ID",
+                        "in": "path",
+                        "description": "设备标识。",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Devices",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1238,7 +2046,254 @@
                     "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
                 },
                 "_id": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "设备标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "设备名称"
+                },
+                "model": {
+                    "type": "string",
+                    "description": "机型。注：更新时忽略请求中的该项参数。"
+                },
+                "plcId": {
+                    "type": "integer",
+                    "description": "Plc编号，为0时表示为设备注：创建时带此参数且置0则表示创建设备更新时忽略请求中的该项参数。"
+                },
+                "maxPlcId": {
+                    "type": "integer",
+                    "description": "最大plc编号，[设备设备记录拓扑中plcid的最大值]注：创建/更新时忽略请求中的该项参数。"
+                },
+                "maxSensorId": {
+                    "type": "integer",
+                    "description": "最大sensor编号，[设备设备记录拓扑中sensorId的最大值]注：创建/更新时忽略请求中的该项参数。"
+                },
+                "mobileNumber": {
+                    "type": "integer",
+                    "description": "SIM卡号码。"
+                },
+                "timezone": {
+                    "type": "integer",
+                    "description": "设备使用时所在的时区 默认8"
+                },
+                "serialNumber": {
+                    "type": "string",
+                    "description": "设备序列号。注:更新时忽略请求中的该项参数"
+                },
+                "siteName": {
+                    "type": "string",
+                    "description": "所属车辆名称 (选定车辆时指定)"
+                },
+                "siteId": {
+                    "type": "string",
+                    "description": "所属车辆标识（选定车辆时指定）"
+                },
+                "contact": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "phone": {
+                            "type": "string"
+                        },
+                        "email": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object",
+                    "description": "联系人信息注：创建/更新时忽略请求中的该项参数"
+                },
+                "modelId": {
+                    "type": "string",
+                    "description": "机型标识注：更新时忽略请求中的该项参数。"
+                },
+                "vendorId": {
+                    "type": "integer",
+                    "description": "厂商编号 inhand设备默认为3"
+                },
+                "priIp": {
+                    "type": "string",
+                    "description": "设备私网ip (创建设备时指定)"
+                },
+                "pubIp": {
+                    "type": "string",
+                    "description": "设备公网ip(设备的动态属性，由AP上报获得)注：创建/更新时忽略请求中的该项参数。"
+                },
+                "priPort": {
+                    "type": "integer",
+                    "description": "设备私网port (创建设备时指定)"
+                },
+                "pubPort": {
+                    "type": "integer",
+                    "description": "设备公网port 注：创建/更新时忽略请求中的该项参数."
+                },
+                "online": {
+                    "type": "integer",
+                    "description": "在线状态   0离线  1在线 (设备的动态属性，由AP上报获得)注：创建/更新时忽略请求中的该项参数。"
+                },
+                "syncState": {
+                    "type": "integer",
+                    "description": "同步状态 参见设备动态信息数据结构定义"
+                },
+                "config": {
+                    "type": "object",
+                    "description": "参见设备动态信息数据结构定义"
+                },
+                "info": {
+                    "type": "object",
+                    "description": "参见设备动态信息数据结构定义"
+                },
+                "location": {
+                    "type": "object",
+                    "description": "位置信息",
+                    "properties": {
+                        "region": {
+                            "type": "string"
+                        },
+                        "longitude": {
+                            "type": "number"
+                        },
+                        "latitude": {
+                            "type": "number"
+                        }
+                    }
+                },
+                "deviceconfig": {
+                    "type": "object",
+                    "description": "设备的配置属性"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "安装地址"
+                },
+                "businessState": {
+                    "type": "integer",
+                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修"
+                },
+                "owner": {
+                    "type": "string",
+                    "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "创建时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "更新时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
+                }
+            }
+        },
+        "Deviceconfig": {
+            "properties": {
+                "heartbeatTimeout": {
+                    "type": "integer",
+                    "description": "心跳超时"
+                },
+                "resendLogin": {
+                    "type": "integer",
+                    "description": "重新登陆间隔"
+                },
+                "maxHeartbeatLost": {
+                    "type": "integer",
+                    "description": "最大心跳丢失次数"
+                },
+                "heartbeatInterval": {
+                    "type": "integer",
+                    "description": "心跳间隔"
+                },
+                "alarmTrapInterval": {
+                    "type": "number",
+                    "description": "报警间隔"
+                },
+                "alarmTrapTimeout": {
+                    "type": "number",
+                    "description": "报警上报超时"
+                },
+                "statusTrapInterval": {
+                    "type": "number",
+                    "description": "状态上报周期"
+                },
+                "statusTrapTimeout": {
+                    "type": "number",
+                    "description": "状态上报超时"
+                },
+                "eventinterval": {
+                    "type": "number",
+                    "description": "暂无"
+                },
+                "TNS": {
+                    "type": "string",
+                    "description": "进程号"
+                },
+                "cycelTime": {
+                    "type": "string",
+                    "description": "循环时间"
+                },
+                "connectionId": {
+                    "type": "string",
+                    "description": "连接id"
+                },
+                "abPath": {
+                    "type": "string",
+                    "description": "Ab设备路径"
+                },
+                "connSerialNum": {
+                    "type": "string",
+                    "description": "连接串口号"
+                },
+                "requPacketInterval": {
+                    "type": "string",
+                    "description": "请求包间隔"
+                },
+                "workMode": {
+                    "type": "integer",
+                    "description": "工作模式"
+                },
+                "cmdMode": {
+                    "type": "integer",
+                    "description": "命令模式"
+                },
+                "queryInterval": {
+                    "type": "number",
+                    "description": "机器查询间隔"
+                },
+                "sensorRWtimeout": {
+                    "type": "number",
+                    "description": "读写超时"
+                },
+                "usingStatus": {
+                    "type": "integer",
+                    "description": "使用状态"
+                },
+                "mbParity": {
+                    "type": "integer",
+                    "description": "奇偶校验位"
+                },
+                "mbStopBit": {
+                    "type": "integer",
+                    "description": "停止位"
+                },
+                "mbDataBit": {
+                    "type": "integer",
+                    "description": "数据位"
+                },
+                "mbBaud": {
+                    "type": "integer",
+                    "description": "波特率"
+                },
+                "mbAddress": {
+                    "type": "integer",
+                    "description": "串口地址"
+                },
+                "mbPort": {
+                    "type": "integer",
+                    "description": "串口号"
+                },
+                "mbIp": {
+                    "type": "string",
+                    "description": "串口ip"
                 }
             }
         },
