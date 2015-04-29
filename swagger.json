@@ -3037,10 +3037,6 @@
         },
         "ResourceTags": {
             "properties": {
-                "resourceId": {
-                    "type": "string",
-                    "description": "资源对应ID."
-                },
                 "tagIds": {
                     "type": "array",
                     "items": {
