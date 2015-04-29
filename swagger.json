@@ -3016,7 +3016,10 @@
         "ResourceIds": {
             "properties": {
                 "resourceIds": {
-                    "type": "object",
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
                     "description": "资源对应ID。"
                 }
             }
