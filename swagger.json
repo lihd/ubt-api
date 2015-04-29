@@ -3015,7 +3015,7 @@
         "ResourceIds": {
             "properties": {
                 "resourceIds": {
-                    "type": "array",
+                    "type": "object",
                     "description": "资源对应ID。"
                 }
             }
