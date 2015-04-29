@@ -2560,6 +2560,872 @@
                     }
                 }
             }
+        },
+        "/api/content_sync/point": {
+            "get": {
+                "summary": "获取发布点。",
+                "description": "获取发布点。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/upload": {
+            "get": {
+                "summary": "上传文件内容。",
+                "description": "上传文件内容。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "fileName",
+                        "in": "query",
+                        "description": "文件名称。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "suffix",
+                        "in": "query",
+                        "description": "文件后缀，默认zip(用于辨别解压方式)",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/publish": {
+            "post": {
+                "summary": "内容发布。",
+                "description": "内容发布。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "description": "内容版本号，并不作为唯一标识。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publishPointId",
+                        "in": "body",
+                        "description": "发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tagId",
+                        "in": "body",
+                        "description": "分组标识",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "siteList",
+                        "in": "body",
+                        "description": "分组标识",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "name": "uri",
+                        "in": "body",
+                        "description": "将要发布的文件路径",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tags",
+                        "in": "body",
+                        "description": "分组标识Id数组，若存在未分组的情况，Id请传defaultTagId",
+                        "required": true,
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "get": {
+                "summary": "根据发布点查询发布版本列表。",
+                "description": "根据发布点查询发布版本列表。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "publishPointId",
+                        "in": "query",
+                        "description": "发布点ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/back": {
+            "get": {
+                "summary": "内容回退。",
+                "description": "内容回退。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "contentPublishedId",
+                        "in": "body",
+                        "description": "内容发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "backDesc",
+                        "in": "body",
+                        "description": "版本回退描述",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/log": {
+            "get": {
+                "summary": "根据发布点查询同步日志。",
+                "description": "根据发布点查询同步日志。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "contentPublishedId",
+                        "in": "query",
+                        "description": "内容发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "state",
+                        "in": "query",
+                        "description": "0等待同步、1同步中、2同步完成",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "deviceName",
+                        "in": "query",
+                        "description": "设备名称，模糊查询",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "version",
+                        "in": "query",
+                        "description": "版本号，模糊查询",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/newJob": {
+            "post": {
+                "summary": "发布定时任务接口。",
+                "description": "发布定时任务接口。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "synchro_cycle",
+                        "in": "body",
+                        "description": "同步周期时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "body",
+                        "description": "开始同步时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "body",
+                        "description": "同步结束时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "server",
+                        "in": "body",
+                        "description": "远程服务器地址",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "远程服务器登陆用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass",
+                        "in": "body",
+                        "description": "远程服务器登陆密码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publishPointId",
+                        "in": "body",
+                        "description": "发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tarPath",
+                        "in": "body",
+                        "description": "文件同步路径",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "siteList",
+                        "in": "body",
+                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "name": "tags",
+                        "in": "body",
+                        "description": "分组分组标识数组，若存在未分组的情况，Id请传defaultTagId",
+                        "required": true,
+                        "type": "array"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/updateJob": {
+            "post": {
+                "summary": "更新定时任务接口。",
+                "description": "更新定时任务接口。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "synchro_cycle",
+                        "in": "body",
+                        "description": "同步周期时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "body",
+                        "description": "开始同步时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "body",
+                        "description": "同步结束时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "server",
+                        "in": "body",
+                        "description": "远程服务器地址",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "port",
+                        "in": "body",
+                        "description": "远程服务器端口",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "body",
+                        "description": "该机构ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "远程服务器登陆用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass",
+                        "in": "body",
+                        "description": "远程服务器登陆密码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publishPointId",
+                        "in": "body",
+                        "description": "发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tarPath",
+                        "in": "body",
+                        "description": "文件同步路径",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "siteList",
+                        "in": "body",
+                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "name": "tags",
+                        "in": "body",
+                        "description": "分组分组标识数组，若存在未分组的情况，Id请传defaultTagId",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "name": "XUId",
+                        "in": "body",
+                        "description": "操作用户机构ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "XUsername",
+                        "in": "body",
+                        "description": "操作用户邮箱",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/content_sync/delJob": {
+            "delete": {
+                "summary": "删除定时任务接口。",
+                "description": "删除定时任务接口。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "synchro_cycle",
+                        "in": "body",
+                        "description": "同步周期时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "startTime",
+                        "in": "body",
+                        "description": "开始同步时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "endTime",
+                        "in": "body",
+                        "description": "同步结束时间",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "server",
+                        "in": "body",
+                        "description": "远程服务器地址",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "port",
+                        "in": "body",
+                        "description": "远程服务器端口",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "body",
+                        "description": "该机构ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user",
+                        "in": "body",
+                        "description": "远程服务器登陆用户名",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "pass",
+                        "in": "body",
+                        "description": "远程服务器登陆密码",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publishPointId",
+                        "in": "body",
+                        "description": "发布点ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "tarPath",
+                        "in": "body",
+                        "description": "文件同步路径",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "siteList",
+                        "in": "body",
+                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
+                        "required": true,
+                        "type": "array"
+                    },
+                    {
+                        "name": "XUId",
+                        "in": "body",
+                        "description": "操作用户机构ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "XUsername",
+                        "in": "body",
+                        "description": "操作用户邮箱",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/traffic_day": {
+            "get": {
+                "summary": "日报流量（当天流量）统计。",
+                "description": "日报流量（当天流量）统计。",
+                "tags": [
+                    "Traffic"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "device_id",
+                        "in": "query",
+                        "description": "设备资源ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "查询月份,如：201302",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Traffic",
+                        "schema": {
+                            "$ref": "#/definitions/Traffic"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/traffic_month/list": {
+            "post": {
+                "summary": "月报流量。",
+                "description": "月报流量。",
+                "tags": [
+                    "Traffic"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "month",
+                        "in": "query",
+                        "description": "查询月份,如：201302",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "资源ID",
+                        "required": true,
+                        "schema": {
+                            "items": {
+                                "type": "array",
+                                "$ref": "#/definitions/ResourceIds"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Traffic",
+                        "schema": {
+                            "$ref": "#/definitions/Traffic"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -3037,6 +3903,10 @@
         },
         "ResourceTags": {
             "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "资源对应ID."
+                },
                 "tagIds": {
                     "type": "array",
                     "items": {
@@ -3054,6 +3924,38 @@
                         "type": "string"
                     },
                     "description": "资源对应ID。"
+                }
+            }
+        },
+        "Publish": {
+            "properties": {
+                "oid": {
+                    "type": "string",
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "发布点名称"
+                }
+            }
+        },
+        "Traffic": {
+            "properties": {
+                "oid": {
+                    "type": "string",
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "发布点名称"
                 }
             }
         },
