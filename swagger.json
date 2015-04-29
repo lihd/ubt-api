@@ -937,9 +937,7 @@
                         "in": "body",
                         "description": "资源对应ID。",
                         "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
+                        "type": "object"
                     }
                 ],
                 "responses": {
@@ -3009,14 +3007,6 @@
                 "shared": {
                     "type": "boolean",
                     "description": "是否共享。"
-                }
-            }
-        },
-        "ResourceIds": {
-            "properties": {
-                "resourceIds": {
-                    "type": "array",
-                    "description": "资源对应ID。"
                 }
             }
         },
