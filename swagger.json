@@ -142,7 +142,7 @@
             }
         },
         "/api/access_token/org_mgr": {
-            "get": {
+            "post": {
                 "summary": "超级管理员越权令牌",
                 "description": "超级管理员越权时，需拿到机构管理员的访问令牌",
                 "tags": [
