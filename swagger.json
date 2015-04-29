@@ -265,7 +265,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organizationn"
+                            "$ref": "#/definitions/Organization"
                         }
                     },
                     "default": {
