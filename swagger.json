@@ -1063,6 +1063,7 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
