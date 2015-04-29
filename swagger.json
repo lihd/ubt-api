@@ -894,6 +894,16 @@
                         "description": "分组标识。",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "资源对应ID。",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "$ref": "#/definitions/ResourceIds"
+                        }
                     }
                 ],
                 "responses": {
@@ -1047,6 +1057,18 @@
                         "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "resourceTags",
+                        "in": "body",
+                        "description": "资源对应ID和对应分组ID。",
+                        "required": true,
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ResourceTags"
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -3010,6 +3032,21 @@
                 "shared": {
                     "type": "boolean",
                     "description": "是否共享。"
+                }
+            }
+        },
+        "ResourceTags": {
+            "properties": {
+                "resourceId": {
+                    "type": "string",
+                    "description": "资源对应ID."
+                },
+                "tagIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "分组ID可填写多个。"
                 }
             }
         },
