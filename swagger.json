@@ -504,6 +504,15 @@
                         "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "tagInfo",
+                        "in": "body",
+                        "description": "分组信息。(Raw)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/TagInfo"
+                        }
                     }
                 ],
                 "responses": {
@@ -1778,7 +1787,7 @@
                 }
             }
         },
-        "/api/devices/ID": {
+        "/api/devices/{ID}": {
             "delete": {
                 "summary": "删除设备",
                 "description": "删除设备。",
@@ -2968,6 +2977,18 @@
                 "updateTime": {
                     "type": "string",
                     "description": "更新时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
+                }
+            }
+        },
+        "TagInfo": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "分组名称。"
+                },
+                "shared": {
+                    "type": "boolean",
+                    "description": "是否共享。"
                 }
             }
         },
