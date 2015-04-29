@@ -152,7 +152,7 @@
                     {
                         "name": "access_token",
                         "in": "query",
-                        "description": "OAuth2授权后获得注：通过HTTP认证头携带时省略。注：对应角色---超级管理员。",
+                        "description": "OAuth2授权后获得 注：通过HTTP认证头携带时省略。注：对应角色---超级管理员。",
                         "required": true,
                         "type": "string"
                     },
@@ -235,7 +235,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organization"
+                            "$ref": "#/definitions/Orresponse"
                         }
                     },
                     "default": {
@@ -265,7 +265,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organization"
+                            "$ref": "#/definitions/Organizationn"
                         }
                     },
                     "default": {
@@ -3404,8 +3404,8 @@
                         "description": "资源ID",
                         "required": true,
                         "schema": {
+                            "type": "array",
                             "items": {
-                                "type": "array",
                                 "$ref": "#/definitions/ResourceIds"
                             }
                         }
@@ -3956,6 +3956,29 @@
                 "name": {
                     "type": "string",
                     "description": "发布点名称"
+                }
+            }
+        },
+        "Orresponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Organization"
+                    },
+                    "description": "返回的公司对象信息"
                 }
             }
         },
