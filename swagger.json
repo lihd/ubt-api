@@ -938,6 +938,7 @@
                         "description": "资源对应ID。",
                         "required": true,
                         "schema": {
+                            "type": "array",
                             "$ref": "#/definitions/ResourceIds"
                         }
                     }
