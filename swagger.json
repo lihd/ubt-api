@@ -510,6 +510,7 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -610,6 +611,16 @@
                         "description": "分组标识。",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "tagInfo",
+                        "in": "body",
+                        "description": "分组信息。(Raw)",
+                        "required": false,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/TagInfo"
+                        }
                     }
                 ],
                 "responses": {
@@ -728,43 +739,6 @@
                         "description": "每次请求返回的条目数量。",
                         "required": false,
                         "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Tags",
-                        "schema": {
-                            "$ref": "#/definitions/Tags"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "summary": "查询批量资源的分组列表",
-                "description": "查询批量资源的分组列表",
-                "tags": [
-                    "Tags"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -920,6 +894,50 @@
                         "description": "分组标识。",
                         "required": true,
                         "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Tags",
+                        "schema": {
+                            "$ref": "#/definitions/Tags"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "summary": "查询批量资源的分组列表",
+                "description": "查询批量资源的分组列表",
+                "tags": [
+                    "Tags"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "oid",
+                        "in": "query",
+                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "资源对应ID。",
+                        "required": true,
+                        "type": "object"
                     }
                 ],
                 "responses": {
