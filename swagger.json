@@ -4118,7 +4118,7 @@
                     "type": "string",
                     "description": "资源名称。"
                 },
-                "type": {
+                "typee": {
                     "type": "string",
                     "description": "资源类型。"
                 }
