@@ -261,95 +261,14 @@
                         "type": "integer"
                     },
                     {
-                        "name": "name",
+                        "name": "organizationinfo",
                         "in": "body",
-                        "description": "公司名称。",
+                        "description": "分组信息。(Raw)",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "email",
-                        "in": "body",
-                        "description": "公司联系邮箱。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "phone",
-                        "in": "body",
-                        "description": "公司联系电话。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "website",
-                        "in": "body",
-                        "description": "公司网址。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "fax",
-                        "in": "body",
-                        "description": "公司传真。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "address",
-                        "in": "body",
-                        "description": "公司联系地址。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "username",
-                        "in": "body",
-                        "description": "登录用户名。系统唯一。（必须为真实邮箱 创建成功以后会将密码发到该邮箱里）。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "cellPhone",
-                        "in": "body",
-                        "description": "用户手机号码。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "question",
-                        "in": "body",
-                        "description": "安全提问。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "answer",
-                        "in": "body",
-                        "description": "安全提问的答案。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "photoFileId",
-                        "in": "body",
-                        "description": "用户照片文件标识。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "picId",
-                        "in": "body",
-                        "description": "验证码图片ID。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "varificationCode",
-                        "in": "body",
-                        "description": "验证码。",
-                        "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Organizationinfo"
+                        }
                     }
                 ],
                 "responses": {
@@ -3980,6 +3899,62 @@
                 "updateTime": {
                     "type": "string",
                     "description": "更新时间。（标准UTC 时间）注：创建/更新时忽略请求中的该项参数。"
+                }
+            }
+        },
+        "Organizationinfo": {
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "公司名称。必填"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "公司联系邮箱。"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "公司联系电话。"
+                },
+                "website": {
+                    "type": "string",
+                    "description": "公司网址。"
+                },
+                "fax": {
+                    "type": "string",
+                    "description": "公司传真。"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "公司联系地址。"
+                },
+                "username": {
+                    "type": "string",
+                    "description": "登录用户名。系统唯一。（必须为真实邮箱 创建成功以后会将密码发到该邮箱里）。必填"
+                },
+                "cellPhone": {
+                    "type": "string",
+                    "description": "用户手机号码。"
+                },
+                "question": {
+                    "type": "string",
+                    "description": "安全提问。"
+                },
+                "answer": {
+                    "type": "string",
+                    "description": "安全提问的答案。"
+                },
+                "photoFileId": {
+                    "type": "string",
+                    "description": "用户照片文件标识。"
+                },
+                "picId": {
+                    "type": "string",
+                    "description": "验证码图片ID。 必填"
+                },
+                "varificationCode": {
+                    "type": "string",
+                    "description": "验证码。必填"
                 }
             }
         },
