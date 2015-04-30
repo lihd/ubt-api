@@ -4150,7 +4150,7 @@
         "ResultDelorg": {
             "properties": {
                 "result": {
-                    "type": "arrary",
+                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/OrID"
                     }
@@ -4160,7 +4160,7 @@
         "ResultTags": {
             "properties": {
                 "result": {
-                    "type": "arrary",
+                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/Tags"
                     }
@@ -4170,7 +4170,7 @@
         "ResultDeltag": {
             "properties": {
                 "result": {
-                    "type": "arrary",
+                    "type": "array",
                     "items": {
                         "$ref": "#/definitions/TagID"
                     }
