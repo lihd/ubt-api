@@ -274,11 +274,8 @@
                 "responses": {
                     "200": {
                         "description": "Organization",
-                        "result": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/Organizationn"
-                            }
+                        "schema": {
+                            "$ref": "#/definitions/ResultOrg"
                         }
                     },
                     "default": {
@@ -4055,6 +4052,17 @@
                     "type": "integer",
                     "description": "返回的结果数目。"
                 },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Organization"
+                    },
+                    "description": "返回的公司对象信息"
+                }
+            }
+        },
+        "ResultOrg": {
+            "properties": {
                 "result": {
                     "type": "array",
                     "items": {
