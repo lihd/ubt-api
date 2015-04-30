@@ -2162,7 +2162,10 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object"
+                        "type": "object",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
@@ -2481,7 +2484,10 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object"
+                        "type": "object",
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ],
                 "responses": {
