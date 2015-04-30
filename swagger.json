@@ -3927,67 +3927,54 @@
             "properties": {
                 "name": {
                     "type": "string",
-                    "required": true,
                     "description": "公司名称。必填"
                 },
                 "email": {
                     "type": "string",
-                    "required": true,
                     "description": "公司联系邮箱。（必须为真实邮箱 创建成功以后会将密码发到该邮箱里）。必填"
                 },
                 "phone": {
                     "type": "string",
-                    "required": false,
                     "description": "公司联系电话。"
                 },
                 "website": {
                     "type": "string",
-                    "required": false,
                     "description": "公司网址。"
                 },
                 "fax": {
                     "type": "string",
-                    "required": false,
                     "description": "公司传真。"
                 },
                 "address": {
                     "type": "string",
-                    "required": false,
                     "description": "公司联系地址。"
                 },
                 "username": {
                     "type": "string",
-                    "required": true,
                     "description": "登录用户名。必填"
                 },
                 "cellPhone": {
                     "type": "string",
-                    "required": false,
                     "description": "用户手机号码。"
                 },
                 "question": {
                     "type": "string",
-                    "required": true,
                     "description": "安全提问。必填但可以为空"
                 },
                 "answer": {
                     "type": "string",
-                    "required": true,
                     "description": "安全提问的答案。必填但可以为空"
                 },
                 "questionId": {
                     "type": "string",
-                    "required": true,
                     "description": "问题标识。默认填写1"
                 },
                 "picId": {
                     "type": "string",
-                    "required": true,
                     "description": "验证码图片ID。 必填"
                 },
                 "varificationCode": {
                     "type": "string",
-                    "required": true,
                     "description": "验证码。必填"
                 }
             }
@@ -4118,7 +4105,7 @@
                     "type": "string",
                     "description": "资源名称。"
                 },
-                "typee": {
+                "type": {
                     "type": "string",
                     "description": "资源类型。"
                 }
