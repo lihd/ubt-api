@@ -357,7 +357,6 @@
                         "in": "body",
                         "description": "公司信息。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -529,7 +528,6 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -635,8 +633,7 @@
                         "name": "tagInfo",
                         "in": "body",
                         "description": "分组信息。(Raw)",
-                        "required": false,
-                        "type": "object",
+                        "required": "fals",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -1082,7 +1079,6 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1132,7 +1128,6 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
