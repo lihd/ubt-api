@@ -265,7 +265,6 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
