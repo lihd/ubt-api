@@ -4075,7 +4075,7 @@
         "ResultDelorg": {
             "properties": {
                 "result": {
-                    "type": "array",
+                    "type": "object",
                     "items": {
                         "$ref": "#/definitions/ID"
                     }
