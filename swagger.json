@@ -265,6 +265,7 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -357,6 +358,7 @@
                         "in": "body",
                         "description": "公司信息。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -528,6 +530,7 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -633,7 +636,8 @@
                         "name": "tagInfo",
                         "in": "body",
                         "description": "分组信息。(Raw)",
-                        "required": "fals",
+                        "required": false,
+                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -916,6 +920,7 @@
                         "in": "body",
                         "description": "资源对应ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "type": "array",
                             "$ref": "#/definitions/ResourceIds"
@@ -963,6 +968,7 @@
                         "in": "body",
                         "description": "资源对应ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "type": "array",
                             "$ref": "#/definitions/ResourceIds"
@@ -1079,6 +1085,7 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1128,6 +1135,7 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -4047,7 +4055,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4070,7 +4078,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4093,7 +4101,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "dedscription": "资源标识。"
+                    "description": "资源标识。"
                 },
                 "name": {
                     "type": "string",
@@ -4109,7 +4117,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
