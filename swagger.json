@@ -314,7 +314,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organization"
+                            "$ref": "#/definitions/ResultDelorg"
                         }
                     },
                     "default": {
@@ -4069,6 +4069,24 @@
                         "$ref": "#/definitions/Organization"
                     },
                     "description": "返回的公司对象信息"
+                }
+            }
+        },
+        "ResultDelorg": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ID"
+                    }
+                }
+            }
+        },
+        "ID": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "公司标识。"
                 }
             }
         },
