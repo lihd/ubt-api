@@ -4076,7 +4076,7 @@
             "properties": {
                 "result": {
                     "type": "object",
-                    "items": {
+                    "schema": {
                         "$ref": "#/definitions/ID"
                     }
                 }
