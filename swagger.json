@@ -352,23 +352,13 @@
                         "description": "信息详细级别",
                         "required": false,
                         "type": "integer"
-                    },
-                    {
-                        "name": "organizationinfo",
-                        "in": "body",
-                        "description": "公司信息。",
-                        "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/Organizationinfo"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/ResultOrg"
+                            "$ref": "#/definitions/Organization"
                         }
                     },
                     "default": {
@@ -412,7 +402,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/ResultOrg"
+                            "$ref": "#/definitions/Organization"
                         }
                     },
                     "default": {
@@ -484,9 +474,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -538,9 +528,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ResultTags",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/ResultTags"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -584,9 +574,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ResultDeltag",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/ResultDeltag"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -645,9 +635,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ResultTags",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/ResultTags"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -696,9 +686,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ResultTags",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/ResultTags"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -763,9 +753,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -821,9 +811,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -872,9 +862,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ResultTags",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/ResultTags"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -920,7 +910,6 @@
                         "in": "body",
                         "description": "资源对应ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "type": "array",
                             "$ref": "#/definitions/ResourceIds"
@@ -929,9 +918,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -968,7 +957,6 @@
                         "in": "body",
                         "description": "资源对应ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "type": "array",
                             "$ref": "#/definitions/ResourceIds"
@@ -977,9 +965,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -1044,9 +1032,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Resoureponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Resoureponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -1085,7 +1073,6 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "type": "array",
                             "items": {
@@ -1129,19 +1116,6 @@
                         "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "resourceTags",
-                        "in": "body",
-                        "description": "资源对应ID和对应分组ID。",
-                        "required": true,
-                        "type": "object",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/ResourceTags"
-                            }
-                        }
                     }
                 ],
                 "responses": {
@@ -1199,9 +1173,9 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "Tagsresponse",
+                        "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tagsresponse"
+                            "$ref": "#/definitions/Tags"
                         }
                     },
                     "default": {
@@ -2162,10 +2136,7 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "object"
                     }
                 ],
                 "responses": {
@@ -2484,10 +2455,7 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "type": "string"
-                        }
+                        "type": "object"
                     }
                 ],
                 "responses": {
@@ -3935,54 +3903,67 @@
             "properties": {
                 "name": {
                     "type": "string",
+                    "required": true,
                     "description": "公司名称。必填"
                 },
                 "email": {
                     "type": "string",
-                    "description": "公司联系邮箱。（必须为真实邮箱 创建成功以后会将密码发到该邮箱里）。必填"
+                    "required": false,
+                    "description": "公司联系邮箱。"
                 },
                 "phone": {
                     "type": "string",
+                    "required": false,
                     "description": "公司联系电话。"
                 },
                 "website": {
                     "type": "string",
+                    "required": false,
                     "description": "公司网址。"
                 },
                 "fax": {
                     "type": "string",
+                    "required": false,
                     "description": "公司传真。"
                 },
                 "address": {
                     "type": "string",
+                    "required": false,
                     "description": "公司联系地址。"
                 },
                 "username": {
                     "type": "string",
-                    "description": "登录用户名。必填"
+                    "required": true,
+                    "description": "登录用户名。系统唯一。（必须为真实邮箱 创建成功以后会将密码发到该邮箱里）。必填"
                 },
                 "cellPhone": {
                     "type": "string",
+                    "required": false,
                     "description": "用户手机号码。"
                 },
                 "question": {
                     "type": "string",
-                    "description": "安全提问。必填但可以为空"
+                    "required": false,
+                    "description": "安全提问。"
                 },
                 "answer": {
                     "type": "string",
-                    "description": "安全提问的答案。必填但可以为空"
+                    "required": false,
+                    "description": "安全提问的答案。"
                 },
-                "questionId": {
+                "photoFileId": {
                     "type": "string",
-                    "description": "问题标识。默认填写1"
+                    "required": false,
+                    "description": "用户照片文件标识。"
                 },
                 "picId": {
                     "type": "string",
+                    "required": true,
                     "description": "验证码图片ID。 必填"
                 },
                 "varificationCode": {
                     "type": "string",
+                    "required": true,
                     "description": "验证码。必填"
                 }
             }
@@ -4019,9 +4000,9 @@
                 "resourceIds": {
                     "type": "array",
                     "items": {
-                        "type": "array"
+                        "type": "string"
                     },
-                    "description": "资源对应ID。可填写多个ID"
+                    "description": "资源对应ID。"
                 }
             }
         },
@@ -4061,7 +4042,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "description": "结果总数。"
+                    "dedscription": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4075,68 +4056,6 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/definitions/Organization"
-                    },
-                    "description": "返回的公司对象信息"
-                }
-            }
-        },
-        "Resoureponse": {
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "结果总数。"
-                },
-                "cursor": {
-                    "type": "integer",
-                    "description": "游标。表示从结果的第几条开始。"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "返回的结果数目。"
-                },
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ResouceInfo"
-                    },
-                    "description": "返回资源对象信息"
-                }
-            }
-        },
-        "ResouceInfo": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "资源标识。"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "资源名称。"
-                },
-                "type": {
-                    "type": "string",
-                    "description": "资源类型。"
-                }
-            }
-        },
-        "Tagsresponse": {
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "结果总数。"
-                },
-                "cursor": {
-                    "type": "integer",
-                    "description": "游标。表示从结果的第几条开始。"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "返回的结果数目。"
-                },
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Tags"
                     },
                     "description": "返回的公司对象信息"
                 }
@@ -4158,44 +4077,16 @@
                 "result": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/OrID"
+                        "$ref": "#/definitions/ID"
                     }
                 }
             }
         },
-        "ResultTags": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Tags"
-                    }
-                }
-            }
-        },
-        "ResultDeltag": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/TagID"
-                    }
-                }
-            }
-        },
-        "OrID": {
+        "ID": {
             "properties": {
                 "id": {
                     "type": "string",
                     "description": "公司标识。"
-                }
-            }
-        },
-        "TagID": {
-            "properties": {
-                "id": {
-                    "type": "string",
-                    "description": "分组标识。"
                 }
             }
         },
