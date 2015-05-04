@@ -3911,7 +3911,8 @@
                 },
                 "phone": {
                     "type": "string",
-                    "description": "公司联系电话。"
+                    "description": "公司联系电话。",
+                    "default": ""
                 },
                 "website": {
                     "type": "string",
