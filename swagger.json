@@ -528,7 +528,8 @@
                         "in": "query",
                         "description": "分组是否共享。",
                         "required": false,
-                        "type": "boolean"
+                        "type": "boolean",
+                        "default": ""
                     }
                 ],
                 "responses": {
