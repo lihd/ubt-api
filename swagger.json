@@ -4283,7 +4283,7 @@
                     "description": "在线总数。"
                 },
                 "resourceIds": {
-                    "type": "array",
+                    "type": "string",
                     "description": "设备标识数组。"
                 }
             }
