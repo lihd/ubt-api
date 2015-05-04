@@ -414,6 +414,45 @@
                 }
             }
         },
+        "/api2/organizations/this": {
+            "get": {
+                "summary": "获取当前公司的信息",
+                "description": "获取当前公司的信息",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": "falser",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organization"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
         "/api/tags": {
             "get": {
                 "summary": "获取分组列表",
@@ -3916,15 +3955,18 @@
                 },
                 "website": {
                     "type": "string",
-                    "description": "公司网址。"
+                    "description": "公司网址。",
+                    "default": ""
                 },
                 "fax": {
                     "type": "string",
-                    "description": "公司传真。"
+                    "description": "公司传真。",
+                    "default": ""
                 },
                 "address": {
                     "type": "string",
-                    "description": "公司联系地址。"
+                    "description": "公司联系地址。",
+                    "default": ""
                 },
                 "username": {
                     "type": "string",
@@ -3932,24 +3974,28 @@
                 },
                 "cellPhone": {
                     "type": "string",
-                    "description": "用户手机号码。"
+                    "description": "用户手机号码。",
+                    "default": ""
                 },
                 "questionId": {
                     "type": "integer",
                     "description": "安全提问类型，默认为1 必填",
-                    "default": "1"
+                    "default": 1
                 },
                 "question": {
                     "type": "string",
-                    "description": "安全提问。必填可以为空值"
+                    "description": "安全提问。必填可以为空值",
+                    "default": ""
                 },
                 "answer": {
                     "type": "string",
-                    "description": "安全提问的答案。必填可以为空值"
+                    "description": "安全提问的答案。必填可以为空值",
+                    "default": ""
                 },
                 "photoFileId": {
                     "type": "string",
-                    "description": "用户照片文件标识。"
+                    "description": "用户照片文件标识。",
+                    "default": ""
                 },
                 "picId": {
                     "type": "string",
