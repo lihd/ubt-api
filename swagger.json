@@ -3797,7 +3797,10 @@
                 },
                 "deviceconfig": {
                     "type": "object",
-                    "description": "设备的配置属性"
+                    "description": "设备的配置属性",
+                    "schema": {
+                        "$ref": "#/definitions/Deviceconfig"
+                    }
                 },
                 "address": {
                     "type": "string",
