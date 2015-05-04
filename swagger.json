@@ -785,7 +785,7 @@
                         "name": "resource_type",
                         "in": "query",
                         "description": "资源类型。表示查询指定资源类型的分组列表。",
-                        "required": false,
+                        "required": true,
                         "type": "integer"
                     },
                     {
@@ -814,7 +814,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resourceresponse"
                         }
                     },
                     "default": {
@@ -872,7 +872,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resourceresponse"
                         }
                     },
                     "default": {
@@ -923,7 +923,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resourceresponse"
                         }
                     },
                     "default": {
@@ -1132,11 +1132,9 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
+                        "type": "object",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/ResourceTags"
-                            }
+                            "$ref": "#/definitions/ResourceTags"
                         }
                     }
                 ],
@@ -4055,6 +4053,17 @@
                         "$ref": "#/definitions/Tags"
                     },
                     "description": "返回的分组对象信息。"
+                }
+            }
+        },
+        "Resourceresponse": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tags"
+                    },
+                    "description": "返回的分组对象信息"
                 }
             }
         },
