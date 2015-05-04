@@ -1454,6 +1454,16 @@
                         "description": "若create_site=1 且$DeviceInfo里面无车辆信息。",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "deviceinfo",
+                        "in": "body",
+                        "description": "设备信息.",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
                     }
                 ],
                 "responses": {
@@ -3655,7 +3665,7 @@
                 },
                 "name": {
                     "type": "string",
-                    "description": "设备名称"
+                    "description": "设备名称，必填"
                 },
                 "model": {
                     "type": "string",
@@ -3663,7 +3673,8 @@
                 },
                 "plcId": {
                     "type": "integer",
-                    "description": "Plc编号，为0时表示为设备注：创建时带此参数且置0则表示创建设备更新时忽略请求中的该项参数。"
+                    "description": "Plc编号，为0时表示为设备注：创建时带此参数且置0则表示创建设备更新时忽略请求中的该项参数。",
+                    "default": 0
                 },
                 "maxPlcId": {
                     "type": "integer",
@@ -3683,15 +3694,17 @@
                 },
                 "serialNumber": {
                     "type": "string",
-                    "description": "设备序列号。注:更新时忽略请求中的该项参数"
+                    "description": "设备序列号。必填 注:更新时忽略请求中的该项参数"
                 },
                 "siteName": {
                     "type": "string",
-                    "description": "所属车辆名称 (选定车辆时指定)"
+                    "description": "所属车辆名称 (选定车辆时指定)",
+                    "default": ""
                 },
                 "siteId": {
                     "type": "string",
-                    "description": "所属车辆标识（选定车辆时指定）"
+                    "description": "所属车辆标识（选定车辆时指定）",
+                    "default": "null"
                 },
                 "contact": {
                     "properties": {
@@ -3742,7 +3755,29 @@
                 },
                 "config": {
                     "type": "object",
-                    "description": "参见设备动态信息数据结构定义"
+                    "description": "配置信息",
+                    "properties": {
+                        "timeout": {
+                            "type": "number",
+                            "default": 300000,
+                            "description": "连接超时时间"
+                        },
+                        "ackTimeout": {
+                            "type": "number",
+                            "default": 120000,
+                            "description": "设备响应超时时间"
+                        },
+                        "ackRetries": {
+                            "type": "number",
+                            "default": 3,
+                            "description": "设备最大重传次数"
+                        },
+                        "sync": {
+                            "type": "number",
+                            "default": 2,
+                            "description": "配置同步准则"
+                        }
+                    }
                 },
                 "info": {
                     "type": "object",
@@ -3752,9 +3787,6 @@
                     "type": "object",
                     "description": "位置信息",
                     "properties": {
-                        "region": {
-                            "type": "string"
-                        },
                         "longitude": {
                             "type": "number"
                         },
@@ -3773,7 +3805,14 @@
                 },
                 "businessState": {
                     "type": "integer",
-                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修"
+                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修",
+                    "default": 0,
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ]
                 },
                 "owner": {
                     "type": "string",
@@ -3793,35 +3832,43 @@
             "properties": {
                 "heartbeatTimeout": {
                     "type": "integer",
-                    "description": "心跳超时"
+                    "description": "心跳超时",
+                    "default": 10
                 },
                 "resendLogin": {
                     "type": "integer",
-                    "description": "重新登陆间隔"
+                    "description": "重新登陆间隔",
+                    "default": 60
                 },
                 "maxHeartbeatLost": {
                     "type": "integer",
-                    "description": "最大心跳丢失次数"
+                    "description": "最大心跳丢失次数",
+                    "default": 6
                 },
                 "heartbeatInterval": {
                     "type": "integer",
-                    "description": "心跳间隔"
+                    "description": "心跳间隔",
+                    "default": 120
                 },
                 "alarmTrapInterval": {
                     "type": "number",
-                    "description": "报警间隔"
+                    "description": "报警间隔",
+                    "default": ""
                 },
                 "alarmTrapTimeout": {
                     "type": "number",
-                    "description": "报警上报超时"
+                    "description": "报警上报超时",
+                    "default": ""
                 },
                 "statusTrapInterval": {
                     "type": "number",
-                    "description": "状态上报周期"
+                    "description": "状态上报周期",
+                    "default": ""
                 },
                 "statusTrapTimeout": {
                     "type": "number",
-                    "description": "状态上报超时"
+                    "description": "状态上报超时",
+                    "default": ""
                 },
                 "eventinterval": {
                     "type": "number",
@@ -4218,7 +4265,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4241,7 +4288,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4264,7 +4311,7 @@
             "properties": {
                 "_id": {
                     "type": "string",
-                    "dedscription": "分组标识。"
+                    "description": "分组标识。"
                 },
                 "name": {
                     "type": "string",
@@ -4324,7 +4371,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
