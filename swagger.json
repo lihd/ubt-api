@@ -445,6 +445,43 @@
                         "description": "信息详细级别。",
                         "required": false,
                         "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization",
+                        "schema": {
+                            "$ref": "#/definitions/Organization"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "summary": "更新当前公司的信息",
+                "description": "更新当前公司的信息",
+                "tags": [
+                    "Organization"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。",
+                        "required": false,
+                        "type": "integer"
                     },
                     {
                         "name": "organizationinfo",
@@ -979,7 +1016,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resources_multiple_tags_response"
                         }
                     },
                     "default": {
@@ -1026,7 +1063,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resources_multiple_tags_response"
                         }
                     },
                     "default": {
@@ -1093,7 +1130,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/ResponseIdResource"
                         }
                     },
                     "default": {
@@ -4016,11 +4053,6 @@
                     "description": "安全提问的答案。必填可以为空值",
                     "default": ""
                 },
-                "photoFileId": {
-                    "type": "string",
-                    "description": "用户照片文件标识。",
-                    "default": ""
-                },
                 "picId": {
                     "type": "string",
                     "description": "验证码图片ID。 必填"
@@ -4163,6 +4195,45 @@
                         "type": "string"
                     },
                     "description": "资源对应ID。"
+                }
+            }
+        },
+        "Resourceinfo": {
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "description": "资源对应ID."
+                },
+                "name": {
+                    "type": "string",
+                    "description": "资源名称。"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "资源类型。"
+                }
+            }
+        },
+        "ResponseIdResource": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Resourceinfo"
+                    },
+                    "description": "返回的资源对象信息"
                 }
             }
         },
