@@ -3798,8 +3798,27 @@
                 "deviceconfig": {
                     "type": "object",
                     "description": "设备的配置属性",
-                    "schema": {
-                        "$ref": "#/definitions/Deviceconfig"
+                    "properties": {
+                        "heartbeatTimeout": {
+                            "type": "integer",
+                            "description": "心跳超时",
+                            "default": 10
+                        },
+                        "resendLogin": {
+                            "type": "integer",
+                            "description": "重新登陆间隔",
+                            "default": 60
+                        },
+                        "maxHeartbeatLost": {
+                            "type": "integer",
+                            "description": "最大心跳丢失次数",
+                            "default": 6
+                        },
+                        "heartbeatInterval": {
+                            "type": "integer",
+                            "description": "心跳间隔",
+                            "default": 120
+                        }
                     }
                 },
                 "address": {
