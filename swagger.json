@@ -1134,7 +1134,7 @@
                         "required": true,
                         "type": "object",
                         "schema": {
-                            "$ref": "#/definitions/ResourceTags"
+                            "$ref": "#/definitions/ResourceTagsId"
                         }
                     }
                 ],
@@ -4064,6 +4064,16 @@
                         "$ref": "#/definitions/Tags"
                     },
                     "description": "返回的分组对象信息"
+                }
+            }
+        },
+        "ResourceTagsId": {
+            "properties": {
+                "resourceTags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ResourceTags"
+                    }
                 }
             }
         },
