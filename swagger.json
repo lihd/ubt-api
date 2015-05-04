@@ -1142,7 +1142,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resources_multiple_tags_response"
                         }
                     },
                     "default": {
@@ -1173,13 +1173,23 @@
                         "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "resourceTags",
+                        "in": "body",
+                        "description": "资源对应ID和对应分组ID。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceTagsId"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Resources_multiple_tags_response"
                         }
                     },
                     "default": {
@@ -4053,6 +4063,59 @@
                         "$ref": "#/definitions/Tags"
                     },
                     "description": "返回的分组对象信息。"
+                }
+            }
+        },
+        "Resources_multiple_tags_response": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Resources_multiple"
+                    },
+                    "description": "返回的分组对象信息"
+                }
+            }
+        },
+        "Resources_multiple": {
+            "properties": {
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Resources_multiple_tags"
+                    },
+                    "description": "返回的分组对象信息"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "schema": {
+                        "$ref": "#/definitions/ID"
+                    },
+                    "description": "返回的资源ID"
+                }
+            }
+        },
+        "Resources_multiple_tags": {
+            "properties": {
+                "tagName": {
+                    "type": "string",
+                    "description": "分组名称"
+                },
+                "resourceType": {
+                    "type": "integer",
+                    "description": "资源类型"
+                },
+                "resourceId": {
+                    "type": "string",
+                    "description": "资源标识"
+                },
+                "tagId": {
+                    "type": "string",
+                    "description": "分组标识"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": ""
                 }
             }
         },
