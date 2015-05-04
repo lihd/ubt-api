@@ -352,6 +352,16 @@
                         "description": "信息详细级别",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "organizationinfo",
+                        "in": "body",
+                        "description": "公司信息。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Organizationinfo"
+                        }
                     }
                 ],
                 "responses": {
@@ -433,8 +443,18 @@
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。",
-                        "required": "falser",
+                        "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "organizationinfo",
+                        "in": "body",
+                        "description": "公司信息。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Organizationinfo"
+                        }
                     }
                 ],
                 "responses": {
