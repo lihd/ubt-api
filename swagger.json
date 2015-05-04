@@ -3935,7 +3935,8 @@
                 },
                 "questionId": {
                     "type": "integer",
-                    "description": "安全提问类型，默认为1 必填"
+                    "description": "安全提问类型，默认为1 必填",
+                    "default": "1"
                 },
                 "question": {
                     "type": "string",
