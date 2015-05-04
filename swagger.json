@@ -526,17 +526,16 @@
                     {
                         "name": "shared",
                         "in": "query",
-                        "description": "分组是否共享。",
+                        "description": "分组是否共享。该参数可以不要",
                         "required": false,
-                        "type": "boolean",
-                        "default": ""
+                        "type": "boolean"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/Tagresponse"
                         }
                     },
                     "default": {
@@ -636,7 +635,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/ResultDelorg"
                         }
                     },
                     "default": {
@@ -3537,13 +3536,9 @@
                     "type": "string",
                     "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。"
                 },
-                "createTime": {
-                    "type": "integer",
-                    "description": "创建时间。注：创建/更新时忽略请求中的该项参数。"
-                },
                 "updateTime": {
                     "type": "integer",
-                    "description": "更新时间。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "创建或更新时间。注：创建/更新时忽略请求中的该项参数。"
                 }
             }
         },
@@ -4040,6 +4035,29 @@
                 }
             }
         },
+        "Tagresponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tags"
+                    },
+                    "description": "返回的分组对象信息。"
+                }
+            }
+        },
         "ResourceTags": {
             "properties": {
                 "resourceId": {
@@ -4146,7 +4164,7 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "公司标识。"
+                    "description": "资源标识。"
                 }
             }
         },
