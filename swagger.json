@@ -1279,7 +1279,7 @@
                     "200": {
                         "description": "Tags",
                         "schema": {
-                            "$ref": "#/definitions/Tags"
+                            "$ref": "#/definitions/ResponseDeviceTagInfo"
                         }
                     },
                     "default": {
@@ -4234,6 +4234,57 @@
                         "$ref": "#/definitions/Resourceinfo"
                     },
                     "description": "返回的资源对象信息"
+                }
+            }
+        },
+        "ResponseDeviceTagInfo": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/DeviceTagInfo"
+                    },
+                    "description": "返回的资源对象信息"
+                }
+            }
+        },
+        "DeviceTagInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "dedscription": "分组标识。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "分组名称。"
+                },
+                "shared": {
+                    "type": "boolean",
+                    "description": "分组是否共享。"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "设备总数。"
+                },
+                "online": {
+                    "type": "integer",
+                    "description": "在线总数。"
+                },
+                "resourceIds": {
+                    "type": "array",
+                    "description": "设备标识数组。"
                 }
             }
         },
