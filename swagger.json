@@ -1409,7 +1409,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1471,7 +1471,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/DevicesCreateresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1611,7 +1611,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1674,7 +1674,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1807,7 +1807,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1877,7 +1877,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1933,7 +1933,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -1979,7 +1979,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -2047,7 +2047,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/DevicesCreateresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -2098,7 +2098,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/DevicesCreateresponse"
+                            "$ref": "#/definitions/Devices"
                         }
                     },
                     "default": {
@@ -2177,9 +2177,9 @@
                     {
                         "name": "has_gateway",
                         "in": "query",
-                        "description": "是否有设备。如果有填写true，没有填写false",
+                        "description": "是否有设备。",
                         "requird": false,
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
                         "name": "business_state",
@@ -2207,7 +2207,7 @@
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitesresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2251,17 +2251,14 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/Sites"
-                        }
+                        "type": "object"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitescreateresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2333,9 +2330,9 @@
                     {
                         "name": "has_gateway",
                         "in": "query",
-                        "description": "是否有设备。如果有填写true，没有填写false",
+                        "description": "是否有设备。",
                         "requird": false,
-                        "type": "string"
+                        "type": "boolean"
                     },
                     {
                         "name": "start_time",
@@ -2354,19 +2351,16 @@
                     {
                         "name": "resourceIds",
                         "in": "body",
-                        "description": "车辆资源ID，可填写多个。",
+                        "description": "对应资源ID",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
+                        "type": "array"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitesresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2406,23 +2400,13 @@
                         "description": "信息详细级别。",
                         "required": false,
                         "type": "integer"
-                    },
-                    {
-                        "name": "alias",
-                        "in": "body",
-                        "description": "设备对象数组。",
-                        "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/Alias"
-                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/AliasResponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2473,19 +2457,16 @@
                     {
                         "name": "resourceIds",
                         "in": "body",
-                        "description": "车辆资源ID，可填写多个。",
+                        "description": "资源对应ID。",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
+                        "type": "string"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitesresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2538,7 +2519,7 @@
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2589,17 +2570,14 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
-                        "schema": {
-                            "$ref": "#/definitions/Sites"
-                        }
+                        "type": "object"
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitescreateresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2650,7 +2628,7 @@
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Sitescreateresponse"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -2696,7 +2674,7 @@
                     "200": {
                         "description": "Sites",
                         "schema": {
-                            "$ref": "#/definitions/Countdevice"
+                            "$ref": "#/definitions/Sites"
                         }
                     },
                     "default": {
@@ -4084,40 +4062,6 @@
                 }
             }
         },
-        "Sitesresponse": {
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "结果总数。"
-                },
-                "cursor": {
-                    "type": "integer",
-                    "description": "游标。表示从结果的第几条开始。"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "返回的结果数目。"
-                },
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Sites"
-                    },
-                    "description": "返回的车辆对象信息。"
-                }
-            }
-        },
-        "Sitescreateresponse": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Sites"
-                    },
-                    "description": "返回的车辆对象信息。"
-                }
-            }
-        },
         "Organizationinfo": {
             "properties": {
                 "name": {
@@ -4194,45 +4138,11 @@
                 }
             }
         },
-        "Devicesresponse": {
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "结果总数。"
-                },
-                "cursor": {
-                    "type": "integer",
-                    "description": "游标。表示从结果的第几条开始。"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "返回的结果数目。"
-                },
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Devices"
-                    },
-                    "description": "返回的分组对象信息。"
-                }
-            }
-        },
-        "DevicesCreateresponse": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/Devices"
-                    },
-                    "description": "返回的分组对象信息。"
-                }
-            }
-        },
         "Tagresponse": {
             "properties": {
                 "total": {
                     "type": "integer",
-                    "description": "结果总数。"
+                    "dedscription": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4273,12 +4183,10 @@
                 },
                 "resourceId": {
                     "type": "string",
-                    "description": "返回的资源ID",
-                    "properties": {
-                        "id": {
-                            "type": "string"
-                        }
-                    }
+                    "schema": {
+                        "$ref": "#/definitions/ID"
+                    },
+                    "description": "返回的资源ID"
                 }
             }
         },
@@ -4628,48 +4536,8 @@
                 "syncModule": {
                     "type": "object",
                     "description": "同步点模块，对rsync同步模块的对象封装。",
-                    "properties": {
-                        "moduleName": {
-                            "type": "string",
-                            "description": "同步点模块的名称，约定格式：发布点id_设备id_机构id。"
-                        },
-                        "path": {
-                            "type": "string",
-                            "description": "同步点对应的目录。"
-                        },
-                        "readOnly": {
-                            "type": "string",
-                            "description": "是否只读模式。",
-                            "default": true
-                        },
-                        "list": {
-                            "type": "string",
-                            "description": "该选项设定当客户请求可以使用的模块列表时，该模块是否应该被列出。",
-                            "default": "yes"
-                        },
-                        "authUsers": {
-                            "type": "string",
-                            "description": "同步点认证用户名，约定：设备序列号。"
-                        },
-                        "authPassword": {
-                            "type": "string",
-                            "description": "同步点认证密码，约定：设备当前初始化得到的key"
-                        },
-                        "ignoreErrors": {
-                            "type": "string",
-                            "description": "忽略错误，默认 否。",
-                            "default": "no"
-                        },
-                        "ignoreNonreadable": {
-                            "type": "string",
-                            "description": "指定rsync服务器完全忽略那些用户没有访问权限的文件，这对于在需要备份的目录中有些文件所不应该被备份者得到的情况下是有意义的。",
-                            "default": "yes"
-                        },
-                        "transferLogging": {
-                            "type": "string",
-                            "description": "选项开启则记录下载和上传操作",
-                            "default": "no"
-                        }
+                    "schema": {
+                        "$ref": "#/definitions/SyncModule"
                     }
                 }
             }
@@ -4850,57 +4718,6 @@
                             "type": "integer",
                             "description": "厂商标识，3为映翰通",
                             "default": 3
-                        }
-                    }
-                }
-            }
-        },
-        "Alias": {
-            "properties": {
-                "devices": {
-                    "type": "array",
-                    "properties": {
-                        "siteId": {
-                            "type": "string",
-                            "description": "车辆ID。"
-                        },
-                        "alias": {
-                            "type": "string",
-                            "description": "别名。"
-                        }
-                    }
-                }
-            }
-        },
-        "AliasResponse": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "properties": {
-                        "siteId": {
-                            "type": "string",
-                            "description": "车辆ID。"
-                        },
-                        "alias": {
-                            "type": "string",
-                            "description": "别名。"
-                        },
-                        "deviceId": {
-                            "type": "string",
-                            "description": "设备ID。"
-                        }
-                    }
-                }
-            }
-        },
-        "Countdevice": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "properties": {
-                        "count": {
-                            "type": "integer",
-                            "description": "统计数量。"
                         }
                     }
                 }
