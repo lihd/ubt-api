@@ -4088,7 +4088,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4198,7 +4198,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4232,7 +4232,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
