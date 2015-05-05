@@ -4816,15 +4816,17 @@
         "Alias": {
             "properties": {
                 "devices": {
-                    "type": "object",
-                    "properties": {
-                        "siteId": {
-                            "type": "string",
-                            "description": "车辆ID。"
-                        },
-                        "alias": {
-                            "type": "string",
-                            "description": "别名。"
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "siteId": {
+                                "type": "string",
+                                "description": "车辆ID。"
+                            },
+                            "alias": {
+                                "type": "string",
+                                "description": "别名。"
+                            }
                         }
                     }
                 }
