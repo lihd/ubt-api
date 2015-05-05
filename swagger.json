@@ -4357,6 +4357,257 @@
                 }
             }
         },
+        "PublishPointInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "oid": {
+                    "type": "string",
+                    "description": "机构标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "发布点名称"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "发布优先级别：1-高，2-中，3-低",
+                    "default": 2
+                },
+                "syncCycleTime": {
+                    "type": "integer",
+                    "description": "同步周期，默认900000，单位:毫秒，15分钟。",
+                    "default": 900000
+                },
+                "status": {
+                    "type": "integer",
+                    "description": "发布点状态：1-可用，0-不可用。",
+                    "default": 1
+                },
+                "syncTimeInterval": {
+                    "type": "string",
+                    "description": "同步时间段，默认：between hour 0 and 23 on weekday 0,1,2,3,4,5,6。",
+                    "default": "between hour 0 and 23 on weekday 0,1,2,3,4,5,6"
+                },
+                "devicePath": {
+                    "type": "string",
+                    "description": "设备端存储目录默认为html。",
+                    "default": "html"
+                }
+            }
+        },
+        "ContentPublishedInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "oid": {
+                    "type": "string",
+                    "description": "机构标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "内容版本号，并不作为唯一标识"
+                },
+                "publishPointId": {
+                    "type": "integer",
+                    "description": "发布点标识"
+                },
+                "deviceList": {
+                    "type": "array",
+                    "description": "所发布的设备列表。",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "groupName": {
+                    "type": "string",
+                    "description": "发布组名。"
+                },
+                "uri": {
+                    "type": "string",
+                    "description": "当前发布所在目录。"
+                },
+                "fileSize": {
+                    "type": "number",
+                    "description": "发布的文件大小。"
+                },
+                "createTime": {
+                    "type": "number",
+                    "description": "发布时间"
+                },
+                "operationId": {
+                    "type": "string",
+                    "description": "操作人用户id"
+                },
+                "operationName": {
+                    "type": "string",
+                    "description": "操作人用户名。"
+                },
+                "backRecord": {
+                    "type": "array",
+                    "description": "版本回退记录。",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "backTime": {
+                    "type": "number",
+                    "description": "回退时间。"
+                },
+                "backDesc": {
+                    "type": "string",
+                    "description": "回退描述。"
+                }
+            }
+        },
+        "SyncModule": {
+            "properties": {
+                "moduleName": {
+                    "type": "string",
+                    "description": "同步点模块的名称，约定格式：发布点id_设备id_机构id。"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "同步点对应的目录。"
+                },
+                "readOnly": {
+                    "type": "string",
+                    "description": "是否只读模式。",
+                    "default": true
+                },
+                "list": {
+                    "type": "string",
+                    "description": "该选项设定当客户请求可以使用的模块列表时，该模块是否应该被列出。",
+                    "default": "yes"
+                },
+                "authUsers": {
+                    "type": "string",
+                    "description": "同步点认证用户名，约定：设备序列号。"
+                },
+                "authPassword": {
+                    "type": "string",
+                    "description": "同步点认证密码，约定：设备当前初始化得到的key"
+                },
+                "ignoreErrors": {
+                    "type": "string",
+                    "description": "忽略错误，默认 否。",
+                    "default": "no"
+                },
+                "ignoreNonreadable": {
+                    "type": "string",
+                    "description": "指定rsync服务器完全忽略那些用户没有访问权限的文件，这对于在需要备份的目录中有些文件所不应该被备份者得到的情况下是有意义的。",
+                    "default": "yes"
+                },
+                "transferLogging": {
+                    "type": "string",
+                    "description": "选项开启则记录下载和上传操作",
+                    "default": "no"
+                }
+            }
+        },
+        "SyncPointInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "同步点名称，约定格式：发布点id_设备id_机构id。"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "设备标识。"
+                },
+                "publishPointId": {
+                    "type": "string",
+                    "description": "发布点标识。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "内容版本号，并不作为唯一标识。"
+                },
+                "contentPublishedId": {
+                    "type": "string",
+                    "description": "当次发布记录标识"
+                },
+                "state": {
+                    "type": "integer",
+                    "description": "当前同步状态：0-等待同步，1-同步中，2-已完成。"
+                },
+                "syncModule": {
+                    "type": "object",
+                    "description": "同步点模块，对rsync同步模块的对象封装。",
+                    "schema": {
+                        "$ref": "#/definitions/SyncModule"
+                    }
+                }
+            }
+        },
+        "SyncLogInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "设备唯一标识。"
+                },
+                "deviceName": {
+                    "type": "string",
+                    "description": "设备名称。"
+                },
+                "publishPointId": {
+                    "type": "string",
+                    "description": "发布点标识。"
+                },
+                "publishPointName": {
+                    "type": "string",
+                    "description": "发布点名称"
+                },
+                "groupName": {
+                    "type": "string",
+                    "description": "发布组。"
+                },
+                "currentVersion": {
+                    "type": "number",
+                    "description": "当前版本。"
+                },
+                "syncVersion": {
+                    "type": "number",
+                    "description": "同步版本"
+                },
+                "fileSize": {
+                    "type": "string",
+                    "description": "发布文件大小。"
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "发布时间。"
+                },
+                "syncStartTime": {
+                    "type": "string",
+                    "description": "同步开始时间"
+                },
+                "state": {
+                    "type": "integer",
+                    "description": "当前同步状态：0-等待同步，1-同步中，2-已完成。"
+                },
+                "publishUserName": {
+                    "type": "string",
+                    "description": "当次发布人用户名。"
+                },
+                "contentPublishedId": {
+                    "type": "string",
+                    "description": "当次发布标识"
+                }
+            }
+        },
         "Publish": {
             "properties": {
                 "oid": {
