@@ -4628,8 +4628,48 @@
                 "syncModule": {
                     "type": "object",
                     "description": "同步点模块，对rsync同步模块的对象封装。",
-                    "schema": {
-                        "$ref": "#/definitions/SyncModule"
+                    "properties": {
+                        "moduleName": {
+                            "type": "string",
+                            "description": "同步点模块的名称，约定格式：发布点id_设备id_机构id。"
+                        },
+                        "path": {
+                            "type": "string",
+                            "description": "同步点对应的目录。"
+                        },
+                        "readOnly": {
+                            "type": "string",
+                            "description": "是否只读模式。",
+                            "default": true
+                        },
+                        "list": {
+                            "type": "string",
+                            "description": "该选项设定当客户请求可以使用的模块列表时，该模块是否应该被列出。",
+                            "default": "yes"
+                        },
+                        "authUsers": {
+                            "type": "string",
+                            "description": "同步点认证用户名，约定：设备序列号。"
+                        },
+                        "authPassword": {
+                            "type": "string",
+                            "description": "同步点认证密码，约定：设备当前初始化得到的key"
+                        },
+                        "ignoreErrors": {
+                            "type": "string",
+                            "description": "忽略错误，默认 否。",
+                            "default": "no"
+                        },
+                        "ignoreNonreadable": {
+                            "type": "string",
+                            "description": "指定rsync服务器完全忽略那些用户没有访问权限的文件，这对于在需要备份的目录中有些文件所不应该被备份者得到的情况下是有意义的。",
+                            "default": "yes"
+                        },
+                        "transferLogging": {
+                            "type": "string",
+                            "description": "选项开启则记录下载和上传操作",
+                            "default": "no"
+                        }
                     }
                 }
             }
