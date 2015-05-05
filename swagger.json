@@ -2708,7 +2708,7 @@
                 }
             }
         },
-        "/api/content_sync/point": {
+        "/api/publish_point": {
             "get": {
                 "summary": "获取发布点。",
                 "description": "获取发布点。",
@@ -2724,11 +2724,32 @@
                         "type": "string"
                     },
                     {
+                        "name": "status",
+                        "in": "query",
+                        "description": "当前状态。 1-可用，0-不可用",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
                         "name": "oid",
                         "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
+                        "description": "机构标。",
                         "required": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer"
                     },
                     {
                         "name": "verbose",
@@ -2742,7 +2763,7 @@
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/PublishPointResponse"
                         }
                     },
                     "default": {
@@ -4479,6 +4500,29 @@
                     "type": "string",
                     "description": "设备端存储目录默认为html。",
                     "default": "html"
+                }
+            }
+        },
+        "PublishPointResponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/PublishPointInfo"
+                    },
+                    "description": "返回的资源对象信息"
                 }
             }
         },
