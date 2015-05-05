@@ -4794,7 +4794,7 @@
         "Alias": {
             "properties": {
                 "devices": {
-                    "type": "array",
+                    "type": "object",
                     "properties": {
                         "siteId": {
                             "type": "string",
