@@ -4835,19 +4835,21 @@
         "AliasResponse": {
             "properties": {
                 "result": {
-                    "type": "object",
-                    "properties": {
-                        "siteId": {
-                            "type": "string",
-                            "description": "车辆ID。"
-                        },
-                        "alias": {
-                            "type": "string",
-                            "description": "别名。"
-                        },
-                        "deviceId": {
-                            "type": "string",
-                            "description": "设备ID。"
+                    "type": "array",
+                    "items": {
+                        "properties": {
+                            "siteId": {
+                                "type": "string",
+                                "description": "车辆ID。"
+                            },
+                            "alias": {
+                                "type": "string",
+                                "description": "别名。"
+                            },
+                            "deviceId": {
+                                "type": "string",
+                                "description": "设备ID。"
+                            }
                         }
                     }
                 }
