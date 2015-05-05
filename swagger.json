@@ -1604,10 +1604,7 @@
                         "type": "object",
                         "schema": {
                             "type": "array",
-                            "items": {
-                                "type": "string",
-                                "$ref": "#/definitions/ID"
-                            }
+                            "$ref": "#/definitions/ID"
                         }
                     }
                 ],
