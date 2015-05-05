@@ -1603,8 +1603,7 @@
                         "required": true,
                         "type": "object",
                         "schema": {
-                            "type": "array",
-                            "$ref": "#/definitions/ID"
+                            "$ref": "#/definitions/ResourceIds"
                         }
                     }
                 ],
