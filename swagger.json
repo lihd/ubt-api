@@ -4062,6 +4062,40 @@
                 }
             }
         },
+        "Sitesresponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Sites"
+                    },
+                    "description": "返回的车辆对象信息。"
+                }
+            }
+        },
+        "Sitescreateresponse": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Sites"
+                    },
+                    "description": "返回的车辆对象信息。"
+                }
+            }
+        },
         "Organizationinfo": {
             "properties": {
                 "name": {
@@ -4135,6 +4169,40 @@
                 "shared": {
                     "type": "boolean",
                     "description": "是否共享。"
+                }
+            }
+        },
+        "Devicesresponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "dedscription": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Devices"
+                    },
+                    "description": "返回的分组对象信息。"
+                }
+            }
+        },
+        "DevicesCreateresponse": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Devices"
+                    },
+                    "description": "返回的分组对象信息。"
                 }
             }
         },
@@ -4718,6 +4786,57 @@
                             "type": "integer",
                             "description": "厂商标识，3为映翰通",
                             "default": 3
+                        }
+                    }
+                }
+            }
+        },
+        "Alias": {
+            "properties": {
+                "devices": {
+                    "type": "array",
+                    "properties": {
+                        "siteId": {
+                            "type": "string",
+                            "description": "车辆ID。"
+                        },
+                        "alias": {
+                            "type": "string",
+                            "description": "别名。"
+                        }
+                    }
+                }
+            }
+        },
+        "AliasResponse": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "properties": {
+                        "siteId": {
+                            "type": "string",
+                            "description": "车辆ID。"
+                        },
+                        "alias": {
+                            "type": "string",
+                            "description": "别名。"
+                        },
+                        "deviceId": {
+                            "type": "string",
+                            "description": "设备ID。"
+                        }
+                    }
+                }
+            }
+        },
+        "Countdevice": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "properties": {
+                        "count": {
+                            "type": "integer",
+                            "description": "统计数量。"
                         }
                     }
                 }
