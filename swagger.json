@@ -1451,9 +1451,10 @@
                     {
                         "name": "create_site",
                         "in": "query",
-                        "description": "若create_site=1 且$DeviceInfo里面无车辆信息。",
-                        "required": false,
-                        "type": "integer"
+                        "description": "若create_site=1 且$DeviceInfo里面无车辆信息，自动创建车辆，若create_site=0不会自动创建车辆。",
+                        "required": true,
+                        "type": "integer",
+                        "default": 1
                     },
                     {
                         "name": "deviceinfo",
@@ -1594,6 +1595,20 @@
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "设备资源ID，可填写多个。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string",
+                                "$ref": "#/definitions/ID"
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -3669,7 +3684,7 @@
                 },
                 "model": {
                     "type": "string",
-                    "description": "机型。注：更新时忽略请求中的该项参数。"
+                    "description": "机型。注：更新时忽略请求中的该项参数。必填"
                 },
                 "plcId": {
                     "type": "integer",
@@ -3694,17 +3709,17 @@
                 },
                 "serialNumber": {
                     "type": "string",
-                    "description": "设备序列号。必填 注:更新时忽略请求中的该项参数"
+                    "description": "设备序列号。 注:更新时忽略请求中的该项参数 必填"
                 },
                 "siteName": {
                     "type": "string",
-                    "description": "所属车辆名称 (选定车辆时指定)",
+                    "description": "所属车辆名称 (自动创建时为空选定车辆时指定)",
                     "default": ""
                 },
                 "siteId": {
                     "type": "string",
-                    "description": "所属车辆标识（选定车辆时指定）",
-                    "default": "null"
+                    "description": "所属车辆标识（自动创建时为null选定车辆时指定）",
+                    "default": null
                 },
                 "contact": {
                     "properties": {
@@ -3723,11 +3738,12 @@
                 },
                 "modelId": {
                     "type": "string",
-                    "description": "机型标识注：更新时忽略请求中的该项参数。"
+                    "description": "机型标识注：更新时忽略请求中的该项参数。创建设备时必填"
                 },
                 "vendorId": {
                     "type": "integer",
-                    "description": "厂商编号 inhand设备默认为3"
+                    "description": "厂商编号 inhand设备默认为3",
+                    "default": 3
                 },
                 "priIp": {
                     "type": "string",
@@ -3775,13 +3791,9 @@
                         "sync": {
                             "type": "number",
                             "default": 2,
-                            "description": "配置同步准则"
+                            "description": "配置同步准则2以设备同步为主1以平台同步为主0忽略"
                         }
                     }
-                },
-                "info": {
-                    "type": "object",
-                    "description": "参见设备动态信息数据结构定义"
                 },
                 "location": {
                     "type": "object",
@@ -3827,14 +3839,8 @@
                 },
                 "businessState": {
                     "type": "integer",
-                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修",
-                    "default": 0,
-                    "enum": [
-                        0,
-                        1,
-                        2,
-                        3
-                    ]
+                    "description": "业务状态 0：建设 1：投运 2：故障 3：检修 必填",
+                    "default": 0
                 },
                 "owner": {
                     "type": "string",
