@@ -4808,6 +4808,40 @@
                 }
             }
         },
+        "AliasResponse": {
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "siteId": {
+                            "type": "string",
+                            "description": "车辆ID。"
+                        },
+                        "alias": {
+                            "type": "string",
+                            "description": "别名。"
+                        },
+                        "deviceId": {
+                            "type": "string",
+                            "description": "设备ID。"
+                        }
+                    }
+                }
+            }
+        },
+        "Countdevice": {
+            "properties": {
+                "result": {
+                    "type": "object",
+                    "properties": {
+                        "count": {
+                            "type": "integer",
+                            "description": "统计数量。"
+                        }
+                    }
+                }
+            }
+        },
         "Error": {
             "properties": {
                 "request": {
