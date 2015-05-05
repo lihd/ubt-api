@@ -1658,6 +1658,16 @@
                         "description": "每次请求返回的条目数量。",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "设备资源ID，可填写多个。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceIds"
+                        }
                     }
                 ],
                 "responses": {
@@ -1781,6 +1791,16 @@
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
+                    },
+                    {
+                        "name": "resourceIds",
+                        "in": "body",
+                        "description": "车辆资源ID，可填写多个。",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceIds"
+                        }
                     }
                 ],
                 "responses": {
@@ -1841,59 +1861,16 @@
                         "description": "批量导入数据文件",
                         "requird": true,
                         "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devices",
-                        "schema": {
-                            "$ref": "#/definitions/Devices"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/devices/batch_update": {
-            "post": {
-                "summary": "批量编辑设备",
-                "description": "批量编辑设备。",
-                "tags": [
-                    "Devices"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "file_id",
-                        "in": "query",
-                        "description": "批量导入数据文件",
+                        "name": "publicAttribute",
+                        "in": "body",
+                        "description": "设备公共属性",
                         "requird": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/PublicAttribute"
+                        }
                     }
                 ],
                 "responses": {
@@ -1944,9 +1921,12 @@
                     {
                         "name": "resourceIds",
                         "in": "body",
-                        "description": "设备对应的资源ID",
+                        "description": "设备资源ID，可填写多个。",
                         "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/ResourceIds"
+                        }
                     }
                 ],
                 "responses": {
@@ -2051,6 +2031,16 @@
                         "description": "cancel_site =1 则将此设备移除之前所在车辆",
                         "requeired": false,
                         "type": "string"
+                    },
+                    {
+                        "name": "deviceinfo",
+                        "in": "body",
+                        "description": "设备信息.",
+                        "required": true,
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Devices"
+                        }
                     }
                 ],
                 "responses": {
@@ -3796,10 +3786,12 @@
                     "description": "位置信息",
                     "properties": {
                         "longitude": {
-                            "type": "number"
+                            "type": "number",
+                            "description": "经度"
                         },
                         "latitude": {
-                            "type": "number"
+                            "type": "number",
+                            "description": "纬度"
                         }
                     }
                 },
@@ -4691,6 +4683,43 @@
                 "id": {
                     "type": "string",
                     "description": "资源标识。"
+                }
+            }
+        },
+        "PublicAttribute": {
+            "properties": {
+                "publicAttribute": {
+                    "type": "object",
+                    "description": "添加设备的公共属性。",
+                    "properties": {
+                        "modelId": {
+                            "type": "string",
+                            "description": "机型ID"
+                        },
+                        "location": {
+                            "description": "位置信息。",
+                            "properties": {
+                                "region": {
+                                    "type": "string",
+                                    "default": null,
+                                    "description": "所属地区。"
+                                },
+                                "longitude": {
+                                    "type": "string",
+                                    "description": "经度。"
+                                },
+                                "latitude": {
+                                    "type": "string",
+                                    "description": "纬度。"
+                                }
+                            }
+                        },
+                        "vendorId": {
+                            "type": "integer",
+                            "description": "厂商标识，3为映翰通",
+                            "default": 3
+                        }
+                    }
                 }
             }
         },
