@@ -1409,7 +1409,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devices"
+                            "$ref": "#/definitions/Devicesresponse"
                         }
                     },
                     "default": {
@@ -1471,7 +1471,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devices"
+                            "$ref": "#/definitions/DevicesCreateresponse"
                         }
                     },
                     "default": {
@@ -1611,7 +1611,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devices"
+                            "$ref": "#/definitions/Devicesresponse"
                         }
                     },
                     "default": {
@@ -1674,7 +1674,7 @@
                     "200": {
                         "description": "Devices",
                         "schema": {
-                            "$ref": "#/definitions/Devices"
+                            "$ref": "#/definitions/Devicesresponse"
                         }
                     },
                     "default": {
