@@ -4273,10 +4273,12 @@
                 },
                 "resourceId": {
                     "type": "string",
-                    "schema": {
-                        "$ref": "#/definitions/ID"
-                    },
-                    "description": "返回的资源ID"
+                    "description": "返回的资源ID",
+                    "properties": {
+                        "id": {
+                            "type": "string"
+                        }
+                    }
                 }
             }
         },
