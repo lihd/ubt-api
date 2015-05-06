@@ -5,8 +5,8 @@
         "description": "UBT项目接口说明",
         "version": "1.0.0",
         "contact": {
-            "name": "API Support",
-            "url": "http://jerolin.github.io/ubt-api/dist/",
+            "name": "Pane",
+            "url": "https://github.com/inhandnet/rainbow-api",
             "email": "liwei@inhand.com.cn"
         }
     },
