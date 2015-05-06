@@ -3,12 +3,7 @@
     "info": {
         "title": "UBT API",
         "description": "UBT项目接口说明",
-        "version": "1.0.0",
-        "contact": {
-            "name": "API Support",
-            "url": "http://jerolin.github.io/ubt-api/dist/",
-            "email": "liwei@inhand.com.cn"
-        }
+        "version": "1.0.0"
     },
     "host": "t.u2wifi.cn",
     "schemes": [
@@ -2339,8 +2334,8 @@
                         "name": "has_gateway",
                         "in": "query",
                         "description": "是否有设备。如果有填写true，没有填写false",
-                        "allowEmptyValue": false,
-                        "type": "boolean"
+                        "requird": false,
+                        "type": "string"
                     },
                     {
                         "name": "start_time",
@@ -3328,6 +3323,7 @@
             }
         },
         "/api/traffic_month/list": {
+            "host": "api.m.inhand.com.cn:5280",
             "post": {
                 "summary": "月报流量。",
                 "description": "月报流量。",
