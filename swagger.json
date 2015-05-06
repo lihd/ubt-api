@@ -198,7 +198,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -256,7 +256,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -349,7 +349,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别",
+                        "description": "信息详细级别 该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -403,7 +403,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别",
+                        "description": "信息详细级别 该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     }
@@ -442,7 +442,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     }
@@ -479,7 +479,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -528,7 +528,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -600,7 +600,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -700,7 +700,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -761,7 +761,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1309,7 +1309,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1437,7 +1437,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1501,7 +1501,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1711,7 +1711,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1844,7 +1844,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1914,7 +1914,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2007,7 +2007,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2075,7 +2075,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2135,7 +2135,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2242,7 +2242,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2298,7 +2298,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2403,7 +2403,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2459,7 +2459,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2580,7 +2580,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2641,7 +2641,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     }
@@ -2755,7 +2755,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     }
@@ -2801,7 +2801,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2868,7 +2868,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2929,7 +2929,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2982,7 +2982,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -3038,7 +3038,7 @@
                     {
                         "name": "verbose",
                         "in": "query",
-                        "description": "信息详细级别。",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
                         "type": "integer"
                     },
@@ -3323,6 +3323,7 @@
             }
         },
         "/api/traffic_month/list": {
+            "host": "api.m.inhand.com.cn:5280",
             "post": {
                 "summary": "月报流量。",
                 "description": "月报流量。",
@@ -3358,8 +3359,7 @@
                         "required": true,
                         "type": "object",
                         "schema": {
-                             "$ref": "#/definitions/ResourceIds"
-                            
+                            "$ref": "#/definitions/ResourceIds"
                         }
                     }
                 ],
