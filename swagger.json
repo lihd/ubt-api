@@ -2777,7 +2777,7 @@
             }
         },
         "/api/content_sync/upload": {
-            "get": {
+            "post": {
                 "summary": "上传文件内容。",
                 "description": "上传文件内容。",
                 "tags": [
@@ -3043,7 +3043,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "contentPublishedId",
+                        "name": "publishPointId",
                         "in": "query",
                         "description": "内容发布点ID",
                         "required": true,
@@ -3110,6 +3110,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "publishPointName",
+                        "in": "query",
+                        "description": "发布点名称。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "synchro",
                         "in": "body",
                         "description": "同步周期时间",
@@ -3159,6 +3166,20 @@
                         "type": "string"
                     },
                     {
+                        "name": "publishPointName",
+                        "in": "query",
+                        "description": "发布点名称。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "query",
+                        "description": "任务ID。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "synchro",
                         "in": "body",
                         "description": "更新信息",
@@ -3205,6 +3226,20 @@
                         "in": "query",
                         "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
                         "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "publishPointName",
+                        "in": "query",
+                        "description": "发布点名称。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "jobId",
+                        "in": "query",
+                        "description": "任务ID。",
+                        "required": true,
                         "type": "string"
                     },
                     {
@@ -3767,9 +3802,14 @@
                     "type": "string",
                     "description": "机型标识。注：创建/更新时忽略请求中的该项参数。"
                 },
+                "autoNavi": {
+                    "type": "integer",
+                    "description": "1为自动定位，0是取消自动定位 必填",
+                    "default": 1
+                },
                 "name": {
                     "type": "string",
-                    "description": "设备名称"
+                    "description": "车辆名称 必填"
                 },
                 "address": {
                     "type": "string",
@@ -3777,15 +3817,18 @@
                 },
                 "customerId": {
                     "type": "string",
-                    "description": "所属客户"
+                    "description": "所属客户ID 必填",
+                    "default": null
+                },
+                "customerName": {
+                    "type": "string",
+                    "description": "所属客户name 必填",
+                    "default": ""
                 },
                 "location": {
                     "type": "object",
-                    "description": "位置信息",
+                    "description": "位置信息 必填",
                     "properties": {
-                        "region": {
-                            "type": "string"
-                        },
                         "longitude": {
                             "type": "number"
                         },
@@ -3806,6 +3849,40 @@
                         },
                         "email": {
                             "type": "string"
+                        }
+                    }
+                },
+                "store": {
+                    "type": "object",
+                    "description": "门店信息",
+                    "properties": {
+                        "storeMail": {
+                            "type": "string",
+                            "description": "门店联系邮箱"
+                        },
+                        "storePhone": {
+                            "type": "string",
+                            "description": "门店联系手机号"
+                        },
+                        "storeContact": {
+                            "type": "string",
+                            "description": "门店联系人"
+                        },
+                        "storeLongitude": {
+                            "type": "string",
+                            "description": "门店位置经度"
+                        },
+                        "storeLatitude": {
+                            "type": "string",
+                            "description": "门店位置纬度"
+                        },
+                        "storeProvince": {
+                            "type": "string",
+                            "description": "门店所在省"
+                        },
+                        "storeCity": {
+                            "type": "string",
+                            "description": "门店所在市"
                         }
                     }
                 },
