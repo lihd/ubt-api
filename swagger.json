@@ -2958,7 +2958,7 @@
             }
         },
         "/api/content_sync/back": {
-            "get": {
+            "post": {
                 "summary": "内容回退。",
                 "description": "内容回退。",
                 "tags": [
