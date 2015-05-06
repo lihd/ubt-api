@@ -3356,11 +3356,10 @@
                         "in": "body",
                         "description": "资源ID",
                         "required": true,
+                        "type": "object",
                         "schema": {
-                            "type": "array",
-                            "items": {
-                                "$ref": "#/definitions/ResourceIds"
-                            }
+                             "$ref": "#/definitions/ResourceIds"
+                            
                         }
                     }
                 ],
