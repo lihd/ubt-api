@@ -2806,7 +2806,7 @@
                         "type": "integer"
                     },
                     {
-                        "name": "fileName",
+                        "name": "filename",
                         "in": "query",
                         "description": "文件名称。",
                         "required": true,
