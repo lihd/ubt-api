@@ -2728,7 +2728,8 @@
                         "in": "query",
                         "description": "当前状态。 1-可用，0-不可用",
                         "required": true,
-                        "type": "integer"
+                        "type": "integer",
+                        "default": 1
                     },
                     {
                         "name": "oid",
@@ -2812,6 +2813,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "name",
+                        "in": "query",
+                        "description": "文件名称。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "suffix",
                         "in": "query",
                         "description": "文件后缀，默认zip(用于辨别解压方式)",
@@ -2823,7 +2831,7 @@
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/ResultDelorg"
                         }
                     },
                     "default": {
@@ -2872,46 +2880,21 @@
                         "type": "string"
                     },
                     {
-                        "name": "publishPointId",
+                        "name": "publishPoint",
                         "in": "body",
-                        "description": "发布点ID",
+                        "description": "发布点信息",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tagId",
-                        "in": "body",
-                        "description": "分组标识",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "siteList",
-                        "in": "body",
-                        "description": "分组标识",
-                        "required": true,
-                        "type": "array"
-                    },
-                    {
-                        "name": "uri",
-                        "in": "body",
-                        "description": "将要发布的文件路径",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tags",
-                        "in": "body",
-                        "description": "分组标识Id数组，若存在未分组的情况，Id请传defaultTagId",
-                        "required": true,
-                        "type": "array"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Publish"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/Publishresult"
                         }
                     },
                     "default": {
@@ -2962,7 +2945,7 @@
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/PublishPointResponse"
                         }
                     },
                     "default": {
@@ -3004,25 +2987,21 @@
                         "type": "integer"
                     },
                     {
-                        "name": "contentPublishedId",
+                        "name": "contentPublish",
                         "in": "body",
                         "description": "内容发布点ID",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "backDesc",
-                        "in": "body",
-                        "description": "版本回退描述",
-                        "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/BackPublishinfo"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/Contentpublishresult"
                         }
                     },
                     "default": {
@@ -3096,7 +3075,7 @@
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/SyncLogInfoResponse"
                         }
                     },
                     "default": {
@@ -3131,81 +3110,21 @@
                         "type": "string"
                     },
                     {
-                        "name": "synchro_cycle",
+                        "name": "synchro",
                         "in": "body",
                         "description": "同步周期时间",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "startTime",
-                        "in": "body",
-                        "description": "开始同步时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endTime",
-                        "in": "body",
-                        "description": "同步结束时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "server",
-                        "in": "body",
-                        "description": "远程服务器地址",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "user",
-                        "in": "body",
-                        "description": "远程服务器登陆用户名",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "pass",
-                        "in": "body",
-                        "description": "远程服务器登陆密码",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "publishPointId",
-                        "in": "body",
-                        "description": "发布点ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tarPath",
-                        "in": "body",
-                        "description": "文件同步路径",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "siteList",
-                        "in": "body",
-                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
-                        "required": true,
-                        "type": "array"
-                    },
-                    {
-                        "name": "tags",
-                        "in": "body",
-                        "description": "分组分组标识数组，若存在未分组的情况，Id请传defaultTagId",
-                        "required": true,
-                        "type": "array"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Timedtask"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/TimedtaskResult"
                         }
                     },
                     "default": {
@@ -3240,109 +3159,21 @@
                         "type": "string"
                     },
                     {
-                        "name": "synchro_cycle",
+                        "name": "synchro",
                         "in": "body",
-                        "description": "同步周期时间",
+                        "description": "更新信息",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "startTime",
-                        "in": "body",
-                        "description": "开始同步时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endTime",
-                        "in": "body",
-                        "description": "同步结束时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "server",
-                        "in": "body",
-                        "description": "远程服务器地址",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "port",
-                        "in": "body",
-                        "description": "远程服务器端口",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "body",
-                        "description": "该机构ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "user",
-                        "in": "body",
-                        "description": "远程服务器登陆用户名",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "pass",
-                        "in": "body",
-                        "description": "远程服务器登陆密码",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "publishPointId",
-                        "in": "body",
-                        "description": "发布点ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tarPath",
-                        "in": "body",
-                        "description": "文件同步路径",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "siteList",
-                        "in": "body",
-                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
-                        "required": true,
-                        "type": "array"
-                    },
-                    {
-                        "name": "tags",
-                        "in": "body",
-                        "description": "分组分组标识数组，若存在未分组的情况，Id请传defaultTagId",
-                        "required": true,
-                        "type": "array"
-                    },
-                    {
-                        "name": "XUId",
-                        "in": "body",
-                        "description": "操作用户机构ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "XUsername",
-                        "in": "body",
-                        "description": "操作用户邮箱",
-                        "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Updatejob"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/UpdatejobResult"
                         }
                     },
                     "default": {
@@ -3377,102 +3208,21 @@
                         "type": "string"
                     },
                     {
-                        "name": "synchro_cycle",
+                        "name": "synchro",
                         "in": "body",
-                        "description": "同步周期时间",
+                        "description": "更新信息",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "startTime",
-                        "in": "body",
-                        "description": "开始同步时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "endTime",
-                        "in": "body",
-                        "description": "同步结束时间",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "server",
-                        "in": "body",
-                        "description": "远程服务器地址",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "port",
-                        "in": "body",
-                        "description": "远程服务器端口",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "body",
-                        "description": "该机构ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "user",
-                        "in": "body",
-                        "description": "远程服务器登陆用户名",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "pass",
-                        "in": "body",
-                        "description": "远程服务器登陆密码",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "publishPointId",
-                        "in": "body",
-                        "description": "发布点ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "tarPath",
-                        "in": "body",
-                        "description": "文件同步路径",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "siteList",
-                        "in": "body",
-                        "description": "车辆列表 注：siteList现在可传空，tags不能为空",
-                        "required": true,
-                        "type": "array"
-                    },
-                    {
-                        "name": "XUId",
-                        "in": "body",
-                        "description": "操作用户机构ID",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "XUsername",
-                        "in": "body",
-                        "description": "操作用户邮箱",
-                        "required": true,
-                        "type": "string"
+                        "type": "object",
+                        "schema": {
+                            "$ref": "#/definitions/Updatejob"
+                        }
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/Publish"
+                            "$ref": "#/definitions/DeletejobResult"
                         }
                     },
                     "default": {
@@ -4592,6 +4342,17 @@
                 }
             }
         },
+        "Contentpublishresult": {
+            "properties": {
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ContentPublishedInfo"
+                    },
+                    "description": "返回的公司对象信息"
+                }
+            }
+        },
         "SyncModule": {
             "properties": {
                 "moduleName": {
@@ -4736,19 +4497,92 @@
                 }
             }
         },
+        "SyncLogInfoResponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/SyncLogInfo"
+                    },
+                    "description": "返回的资源对象信息"
+                }
+            }
+        },
         "Publish": {
             "properties": {
-                "oid": {
+                "publishPointId": {
                     "type": "string",
-                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "发布点标识。"
                 },
-                "_id": {
+                "tagId": {
                     "type": "string",
-                    "description": "发布点标识。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "分组标识。"
                 },
-                "name": {
+                "siteList": {
+                    "type": "array",
+                    "description": "现场列表 注：tagId和siteList，两者不能都为空，默认取siteList，如果siteList为空，则通过tagId获取siteList。",
+                    "items": {
+                        "type": "string",
+                        "description": "车辆ID"
+                    }
+                },
+                "uri": {
                     "type": "string",
-                    "description": "发布点名称"
+                    "description": "将要发布的文件路径。"
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "分组标识Id数组，若存在未分组的情况，Id请传defaultTagId。",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "Publishresult": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Publish"
+                    },
+                    "description": "返回的资源对象信息"
+                }
+            }
+        },
+        "BackPublishinfo": {
+            "properties": {
+                "contentPublishedId": {
+                    "type": "string",
+                    "description": "回到发布版本的ID。"
+                },
+                "backDesc": {
+                    "type": "string",
+                    "description": "版本回退描述。"
                 }
             }
         },
@@ -4909,6 +4743,150 @@
                             "description": "统计数量。"
                         }
                     }
+                }
+            }
+        },
+        "Timedtask": {
+            "properties": {
+                "synchro_cycle": {
+                    "type": "string",
+                    "description": "同步周期。默认15分钟",
+                    "default": 900000
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "同步开始时间。"
+                },
+                "endTime": {
+                    "type": "string",
+                    "description": "同步结束时间。"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "远程服务器地址。"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "远程服务器登陆用户名。"
+                },
+                "pass": {
+                    "type": "string",
+                    "description": "远程服务器登陆密码。"
+                },
+                "publishPointId": {
+                    "type": "string",
+                    "description": "发布点ID，比如：Inportal、html、conf，需要发布者，选定一个发布点。"
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "分组标识Id数组，若存在未分组的情况，Id请传defaultTagId。",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "siteList": {
+                    "type": "array",
+                    "description": "现场列表 注：tagId和siteList，两者不能都为空，默认取siteList，如果siteList为空，则通过tagId获取siteList。",
+                    "items": {
+                        "type": "string",
+                        "description": "车辆ID"
+                    }
+                },
+                "tarPath": {
+                    "type": "string",
+                    "description": "文件同步路径。"
+                }
+            }
+        },
+        "Updatejob": {
+            "properties": {
+                "synchro_cycle": {
+                    "type": "string",
+                    "description": "同步周期。默认15分钟",
+                    "default": 900000
+                },
+                "startTime": {
+                    "type": "string",
+                    "description": "同步开始时间。"
+                },
+                "endTime": {
+                    "type": "string",
+                    "description": "同步结束时间。"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "远程服务器地址。"
+                },
+                "port": {
+                    "type": "string",
+                    "description": "远程服务器端口。"
+                },
+                "oid": {
+                    "type": "string",
+                    "description": "机构ID。"
+                },
+                "user": {
+                    "type": "string",
+                    "description": "远程服务器登陆用户名。"
+                },
+                "pass": {
+                    "type": "string",
+                    "description": "远程服务器登陆密码。"
+                },
+                "XUId": {
+                    "type": "string",
+                    "description": "操作用户机构ID。"
+                },
+                "XUsername": {
+                    "type": "string",
+                    "description": "操作用户邮箱。"
+                },
+                "publishPointId": {
+                    "type": "string",
+                    "description": "发布点ID，比如：Inportal、html、conf，需要发布者，选定一个发布点。"
+                },
+                "tags": {
+                    "type": "array",
+                    "description": "分组标识Id数组，若存在未分组的情况，Id请传defaultTagId。",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "siteList": {
+                    "type": "array",
+                    "description": "现场列表 注：tagId和siteList，两者不能都为空，默认取siteList，如果siteList为空，则通过tagId获取siteList。",
+                    "items": {
+                        "type": "string",
+                        "description": "车辆ID"
+                    }
+                },
+                "tarPath": {
+                    "type": "string",
+                    "description": "文件同步路径。"
+                }
+            }
+        },
+        "TimedtaskResult": {
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "default": "job create successful!"
+                }
+            }
+        },
+        "UpdatejobResult": {
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "default": "job update successful!"
+                }
+            }
+        },
+        "DeletejobResult": {
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "default": "job delete successful!"
                 }
             }
         },
