@@ -1596,13 +1596,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
@@ -1667,13 +1660,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
@@ -1724,13 +1710,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ID",
                         "in": "path",
                         "description": "设备标识。",
@@ -1775,13 +1754,6 @@
                         "type": "string",
                         "format": "integer",
                         "default": 100
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "ID",
@@ -1846,13 +1818,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ID",
                         "in": "path",
                         "description": "设备标识。",
@@ -1889,13 +1854,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2178,13 +2136,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ID",
                         "in": "path",
                         "description": "车辆标识。",
@@ -2231,13 +2182,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2296,13 +2240,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ID",
                         "in": "path",
                         "description": "车辆标识。",
@@ -2357,13 +2294,6 @@
                         "required": true,
                         "type": "integer",
                         "default": 1
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "机构标。",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "cursor",
@@ -2973,13 +2903,7 @@
                         "required": true,
                         "type": "string"
                     },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
+
                     {
                         "name": "device_id",
                         "in": "query",
@@ -4157,43 +4081,6 @@
                 "id": {
                     "type": "string",
                     "description": "资源标识。"
-                }
-            }
-        },
-        "PublicAttribute": {
-            "properties": {
-                "publicAttribute": {
-                    "type": "object",
-                    "description": "添加设备的公共属性。",
-                    "properties": {
-                        "modelId": {
-                            "type": "string",
-                            "description": "机型ID"
-                        },
-                        "location": {
-                            "description": "位置信息。",
-                            "properties": {
-                                "region": {
-                                    "type": "string",
-                                    "default": null,
-                                    "description": "所属地区。"
-                                },
-                                "longitude": {
-                                    "type": "string",
-                                    "description": "经度。"
-                                },
-                                "latitude": {
-                                    "type": "string",
-                                    "description": "纬度。"
-                                }
-                            }
-                        },
-                        "vendorId": {
-                            "type": "integer",
-                            "description": "厂商标识，3为映翰通",
-                            "default": 3
-                        }
-                    }
                 }
             }
         },
