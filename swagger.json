@@ -467,13 +467,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
@@ -500,13 +493,6 @@
                         "description": "要查找的名称。",
                         "required": false,
                         "type": "string"
-                    },
-                    {
-                        "name": "shared",
-                        "in": "query",
-                        "description": "分组是否共享。该参数可以不要",
-                        "required": false,
-                        "type": "boolean"
                     }
                 ],
                 "responses": {
@@ -548,13 +534,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "tagInfo",
                         "in": "body",
                         "description": "分组信息。(Raw)",
@@ -593,13 +572,6 @@
                         "in": "query",
                         "description": "OAuth授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -647,13 +619,6 @@
                         "type": "string",
                         "format": "integer",
                         "default": 100
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "ID",
@@ -711,13 +676,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "ID",
                         "in": "path",
                         "description": "分组标识。",
@@ -757,18 +715,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "resource_type",
                         "in": "query",
-                        "description": "资源类型。表示查询指定资源类型的分组列表。",
+                        "description": "资源类型。1机构2用户3角色4客户端5设备6机型7标签8合同9实时数据10配置11机器14车辆15固件16客户17文档19任务20开发者应用21使用者应用22系统文件，表示查询指定资源类型的分组列表。",
                         "required": true,
-                        "type": "integer"
+                        "type": "integer",
+                        "default": 5
                     },
                     {
                         "name": "resource_id",
@@ -829,18 +781,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "resource_type",
                         "in": "query",
-                        "description": "资源类型名。",
+                        "description": "资源类型。1机构2用户3角色4客户端5设备6机型7标签8合同9实时数据10配置11机器14车辆15固件16客户17文档19任务20开发者应用21使用者应用22系统文件，表示查询指定资源类型的分组列表。",
                         "required": true,
-                        "type": "string"
+                        "type": "integer",
+                        "default": 5
                     },
                     {
                         "name": "resource_id",
@@ -887,13 +833,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "resource_id",
                         "in": "query",
                         "description": "资源标识。",
@@ -937,13 +876,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -994,13 +926,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "resourceIds",
                         "in": "body",
                         "description": "资源对应ID。",
@@ -1043,18 +968,12 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "resource_type",
                         "in": "query",
-                        "description": "资源类型。表示查询指定资源类型的分组列表。",
-                        "required": false,
-                        "type": "integer"
+                        "description": "资源类型。1机构2用户3角色4客户端5设备6机型7标签8合同9实时数据10配置11机器14车辆15固件16客户17文档19任务20开发者应用21使用者应用22系统文件，表示查询指定资源类型的分组列表。",
+                        "required": true,
+                        "type": "integer",
+                        "default": 5
                     },
                     {
                         "name": "ID",
@@ -1090,160 +1009,6 @@
                         "description": "Tags",
                         "schema": {
                             "$ref": "#/definitions/ResponseIdResource"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/resources_multiple_tags": {
-            "post": {
-                "summary": "对批量资源添加批量分组",
-                "description": "对指定的批量资源打上指定批量分组。",
-                "tags": [
-                    "Tags"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "resourceTags",
-                        "in": "body",
-                        "description": "资源对应ID和对应分组ID。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceTagsId"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Tags",
-                        "schema": {
-                            "$ref": "#/definitions/Resources_multiple_tags_response"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "summary": "删除批量资源的批量分组",
-                "description": "删除指定的批量资源上指定的批量分组。",
-                "tags": [
-                    "Tags"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "resourceTags",
-                        "in": "body",
-                        "description": "资源对应ID和对应分组ID。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceTagsId"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Tags",
-                        "schema": {
-                            "$ref": "#/definitions/Resources_multiple_tags_response"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/device_tags": {
-            "get": {
-                "summary": "获取设备分组列表",
-                "description": "获取资源类型为设备的分组列表。",
-                "tags": [
-                    "Tags"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "cursor",
-                        "in": "query",
-                        "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 0
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "每次请求返回的条目数量。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 30,
-                        "enum": [
-                            30,
-                            50,
-                            100
-                        ]
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Tags",
-                        "schema": {
-                            "$ref": "#/definitions/ResponseDeviceTagInfo"
                         }
                     },
                     "default": {
@@ -2397,133 +2162,6 @@
                 }
             }
         },
-        "/api/sites/list/device_alias": {
-            "post": {
-                "summary": "批量转换设备列表",
-                "description": "批量转换设备的别名。",
-                "tags": [
-                    "Sites"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
-                        "required": false,
-                        "type": "string",
-                        "format": "integer",
-                        "default": 100
-                    },
-                    {
-                        "name": "alias",
-                        "in": "body",
-                        "description": "设备对象数组。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/Alias"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Sites",
-                        "schema": {
-                            "$ref": "#/definitions/AliasResponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/sites/overview": {
-            "post": {
-                "summary": "获取车辆列表",
-                "description": "通过分组获取分组下的列表时使用此API。",
-                "tags": [
-                    "Sites"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
-                        "required": false,
-                        "type": "string",
-                        "format": "integer",
-                        "default": 100
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "每次请求返回的条目数量。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 30,
-                        "enum": [
-                            30,
-                            50,
-                            100
-                        ]
-                    },
-                    {
-                        "name": "resourceIds",
-                        "in": "body",
-                        "description": "车辆资源ID，可填写多个。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Sites",
-                        "schema": {
-                            "$ref": "#/definitions/Sitesresponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
         "/api/sites/{ID}": {
             "delete": {
                 "summary": "删除车辆",
@@ -2556,9 +2194,14 @@
                     {
                         "name": "delete_all",
                         "in": "query",
-                        "description": "为1时删除车辆下所有的设备。",
+                        "description": "为1时删除车辆下所有的设备0为不删除。",
                         "required": false,
-                        "type": "integer"
+                        "type": "integer",
+                        "default": 0,
+                        "enum": [
+                            0,
+                            1
+                        ]
                     }
                 ],
                 "responses": {
@@ -2692,52 +2335,6 @@
                 }
             }
         },
-        "/api/sites/count/{ID}": {
-            "get": {
-                "summary": "获取指定车辆的设备总数信息",
-                "description": "获取指定车辆的设备总数信息。",
-                "tags": [
-                    "Sites"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "ID",
-                        "in": "path",
-                        "description": "车辆标识。",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Sites",
-                        "schema": {
-                            "$ref": "#/definitions/Countdevice"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
         "/api/publish_point": {
             "get": {
                 "summary": "获取发布点。",
@@ -2848,13 +2445,6 @@
                     },
                     {
                         "name": "filename",
-                        "in": "query",
-                        "description": "文件名称。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "name",
                         "in": "query",
                         "description": "文件名称。",
                         "required": true,
@@ -3713,122 +3303,6 @@
                 }
             }
         },
-        "Deviceconfig": {
-            "properties": {
-                "heartbeatTimeout": {
-                    "type": "integer",
-                    "description": "心跳超时",
-                    "default": 10
-                },
-                "resendLogin": {
-                    "type": "integer",
-                    "description": "重新登陆间隔",
-                    "default": 60
-                },
-                "maxHeartbeatLost": {
-                    "type": "integer",
-                    "description": "最大心跳丢失次数",
-                    "default": 6
-                },
-                "heartbeatInterval": {
-                    "type": "integer",
-                    "description": "心跳间隔",
-                    "default": 120
-                },
-                "alarmTrapInterval": {
-                    "type": "number",
-                    "description": "报警间隔"
-                },
-                "alarmTrapTimeout": {
-                    "type": "number",
-                    "description": "报警上报超时"
-                },
-                "statusTrapInterval": {
-                    "type": "number",
-                    "description": "状态上报周期"
-                },
-                "statusTrapTimeout": {
-                    "type": "number",
-                    "description": "状态上报超时"
-                },
-                "eventinterval": {
-                    "type": "number",
-                    "description": "暂无"
-                },
-                "TNS": {
-                    "type": "string",
-                    "description": "进程号"
-                },
-                "cycelTime": {
-                    "type": "string",
-                    "description": "循环时间"
-                },
-                "connectionId": {
-                    "type": "string",
-                    "description": "连接id"
-                },
-                "abPath": {
-                    "type": "string",
-                    "description": "Ab设备路径"
-                },
-                "connSerialNum": {
-                    "type": "string",
-                    "description": "连接串口号"
-                },
-                "requPacketInterval": {
-                    "type": "string",
-                    "description": "请求包间隔"
-                },
-                "workMode": {
-                    "type": "integer",
-                    "description": "工作模式"
-                },
-                "cmdMode": {
-                    "type": "integer",
-                    "description": "命令模式"
-                },
-                "queryInterval": {
-                    "type": "number",
-                    "description": "机器查询间隔"
-                },
-                "sensorRWtimeout": {
-                    "type": "number",
-                    "description": "读写超时"
-                },
-                "usingStatus": {
-                    "type": "integer",
-                    "description": "使用状态"
-                },
-                "mbParity": {
-                    "type": "integer",
-                    "description": "奇偶校验位"
-                },
-                "mbStopBit": {
-                    "type": "integer",
-                    "description": "停止位"
-                },
-                "mbDataBit": {
-                    "type": "integer",
-                    "description": "数据位"
-                },
-                "mbBaud": {
-                    "type": "integer",
-                    "description": "波特率"
-                },
-                "mbAddress": {
-                    "type": "integer",
-                    "description": "串口地址"
-                },
-                "mbPort": {
-                    "type": "integer",
-                    "description": "串口号"
-                },
-                "mbIp": {
-                    "type": "string",
-                    "description": "串口ip"
-                }
-            }
-        },
         "Sites": {
             "properties": {
                 "oid": {
@@ -3886,40 +3360,6 @@
                         },
                         "email": {
                             "type": "string"
-                        }
-                    }
-                },
-                "store": {
-                    "type": "object",
-                    "description": "门店信息",
-                    "properties": {
-                        "storeMail": {
-                            "type": "string",
-                            "description": "门店联系邮箱"
-                        },
-                        "storePhone": {
-                            "type": "string",
-                            "description": "门店联系手机号"
-                        },
-                        "storeContact": {
-                            "type": "string",
-                            "description": "门店联系人"
-                        },
-                        "storeLongitude": {
-                            "type": "string",
-                            "description": "门店位置经度"
-                        },
-                        "storeLatitude": {
-                            "type": "string",
-                            "description": "门店位置纬度"
-                        },
-                        "storeProvince": {
-                            "type": "string",
-                            "description": "门店所在省"
-                        },
-                        "storeCity": {
-                            "type": "string",
-                            "description": "门店所在市"
                         }
                     }
                 },
@@ -4247,24 +3687,6 @@
                         "$ref": "#/definitions/Tags"
                     },
                     "description": "返回的分组对象信息"
-                }
-            }
-        },
-        "ResourceTagsId": {
-            "properties": {
-                "resourceTags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/ResourceTags"
-                    }
-                }
-            }
-        },
-        "ResourceTags": {
-            "properties": {
-                "resourceId": {
-                    "type": "string",
-                    "description": "资源对应ID."
                 },
                 "tagIds": {
                     "type": "array",
@@ -4322,57 +3744,6 @@
                         "$ref": "#/definitions/Resourceinfo"
                     },
                     "description": "返回的资源对象信息"
-                }
-            }
-        },
-        "ResponseDeviceTagInfo": {
-            "properties": {
-                "total": {
-                    "type": "integer",
-                    "description": "结果总数。"
-                },
-                "cursor": {
-                    "type": "integer",
-                    "description": "游标。表示从结果的第几条开始。"
-                },
-                "limit": {
-                    "type": "integer",
-                    "description": "返回的结果数目。"
-                },
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/DeviceTagInfo"
-                    },
-                    "description": "返回的资源对象信息"
-                }
-            }
-        },
-        "DeviceTagInfo": {
-            "properties": {
-                "_id": {
-                    "type": "string",
-                    "description": "分组标识。"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "分组名称。"
-                },
-                "shared": {
-                    "type": "boolean",
-                    "description": "分组是否共享。"
-                },
-                "total": {
-                    "type": "integer",
-                    "description": "设备总数。"
-                },
-                "online": {
-                    "type": "integer",
-                    "description": "在线总数。"
-                },
-                "resourceIds": {
-                    "type": "string",
-                    "description": "设备标识数组。"
                 }
             }
         },
@@ -4514,88 +3885,6 @@
                         "$ref": "#/definitions/ContentPublishedInfo"
                     },
                     "description": "返回的公司对象信息"
-                }
-            }
-        },
-        "SyncModule": {
-            "properties": {
-                "moduleName": {
-                    "type": "string",
-                    "description": "同步点模块的名称，约定格式：发布点id_设备id_机构id。"
-                },
-                "path": {
-                    "type": "string",
-                    "description": "同步点对应的目录。"
-                },
-                "readOnly": {
-                    "type": "string",
-                    "description": "是否只读模式。",
-                    "default": true
-                },
-                "list": {
-                    "type": "string",
-                    "description": "该选项设定当客户请求可以使用的模块列表时，该模块是否应该被列出。",
-                    "default": "yes"
-                },
-                "authUsers": {
-                    "type": "string",
-                    "description": "同步点认证用户名，约定：设备序列号。"
-                },
-                "authPassword": {
-                    "type": "string",
-                    "description": "同步点认证密码，约定：设备当前初始化得到的key"
-                },
-                "ignoreErrors": {
-                    "type": "string",
-                    "description": "忽略错误，默认 否。",
-                    "default": "no"
-                },
-                "ignoreNonreadable": {
-                    "type": "string",
-                    "description": "指定rsync服务器完全忽略那些用户没有访问权限的文件，这对于在需要备份的目录中有些文件所不应该被备份者得到的情况下是有意义的。",
-                    "default": "yes"
-                },
-                "transferLogging": {
-                    "type": "string",
-                    "description": "选项开启则记录下载和上传操作",
-                    "default": "no"
-                }
-            }
-        },
-        "SyncPointInfo": {
-            "properties": {
-                "_id": {
-                    "type": "string",
-                    "description": "发布点标识。"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "同步点名称，约定格式：发布点id_设备id_机构id。"
-                },
-                "deviceId": {
-                    "type": "string",
-                    "description": "设备标识。"
-                },
-                "publishPointId": {
-                    "type": "string",
-                    "description": "发布点标识。"
-                },
-                "version": {
-                    "type": "string",
-                    "description": "内容版本号，并不作为唯一标识。"
-                },
-                "contentPublishedId": {
-                    "type": "string",
-                    "description": "当次发布记录标识"
-                },
-                "state": {
-                    "type": "integer",
-                    "description": "当前同步状态：0-等待同步，1-同步中，2-已完成。"
-                },
-                "syncModule": {
-                    "type": "object",
-                    "description": "同步点模块，对rsync同步模块的对象封装。",
-                    "$ref": "#/definitions/SyncModule"
                 }
             }
         },
@@ -4848,61 +4137,6 @@
                             "type": "integer",
                             "description": "厂商标识，3为映翰通",
                             "default": 3
-                        }
-                    }
-                }
-            }
-        },
-        "Alias": {
-            "properties": {
-                "devices": {
-                    "type": "array",
-                    "items": {
-                        "properties": {
-                            "siteId": {
-                                "type": "string",
-                                "description": "车辆ID。"
-                            },
-                            "alias": {
-                                "type": "string",
-                                "description": "别名。"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "AliasResponse": {
-            "properties": {
-                "result": {
-                    "type": "array",
-                    "items": {
-                        "properties": {
-                            "siteId": {
-                                "type": "string",
-                                "description": "车辆ID。"
-                            },
-                            "alias": {
-                                "type": "string",
-                                "description": "别名。"
-                            },
-                            "deviceId": {
-                                "type": "string",
-                                "description": "设备ID。"
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "Countdevice": {
-            "properties": {
-                "result": {
-                    "type": "object",
-                    "properties": {
-                        "count": {
-                            "type": "integer",
-                            "description": "统计数量。"
                         }
                     }
                 }
