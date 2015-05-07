@@ -2903,6 +2903,61 @@
                 }
             }
         },
+        "/api/publish_point/state": {
+            "post": {
+                "summary": "同步状态综合查询接口。",
+                "description": "同步状态综合查询接口。",
+                "tags": [
+                    "Publish"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "1 表示按设备查询 2 表示按发布点查询 3 表示按当前机构查询 4 根据发布记录查询",
+                        "required": true,
+                        "type": "integer",
+                        "default": 2,
+                        "enum": [
+                            1,
+                            2,
+                            3,
+                            4
+                        ]
+                    },
+                    {
+                        "name": "synchro",
+                        "in": "body",
+                        "description": "消息内容",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Publishpointstate"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Publish",
+                        "schema": {
+                            "$ref": "#/definitions/SyncPointInfo"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
         "/api/traffic_day": {
             "get": {
                 "summary": "日报流量（当天流量）统计。",
@@ -4283,6 +4338,112 @@
                 "result": {
                     "type": "string",
                     "default": "job delete successful!"
+                }
+            }
+        },
+        "Publishpointstate": {
+            "properties": {
+                "deviceIds": {
+                    "type": "array",
+                    "description": "设备ID可以传多个",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "publishPointIds": {
+                    "type": "array",
+                    "description": "发布点ID的数组",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "publishIds": {
+                    "type": "array",
+                    "description": "发布记录id的数组",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            }
+        },
+        "SyncPointInfo": {
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "发布点标识。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "同步点名称，约定格式：发布点id_设备id_机构id。"
+                },
+                "deviceId": {
+                    "type": "string",
+                    "description": "设备标识。"
+                },
+                "publishPointId": {
+                    "type": "string",
+                    "description": "发布点标识。"
+                },
+                "version": {
+                    "type": "string",
+                    "description": "内容版本号，并不作为唯一标识。"
+                },
+                "contentPublishedId": {
+                    "type": "string",
+                    "description": "当次发布记录标识"
+                },
+                "state": {
+                    "type": "integer",
+                    "description": "当前同步状态：0-等待同步，1-同步中，2-已完成"
+                },
+                "syncModule": {
+                    "description": "同步点模块，对rsync同步模块的对象封装。",
+                    "$ref": "#/definitions/SyncModule"
+                }
+            }
+        },
+        "SyncModule": {
+            "properties": {
+                "moduleName": {
+                    "type": "string",
+                    "description": "同步点模块的名称，约定格式：发布点id_设备id_机构id。。"
+                },
+                "path": {
+                    "type": "string",
+                    "description": "同步点对应的目录。"
+                },
+                "readOnly": {
+                    "type": "string",
+                    "description": "是否只读模式。",
+                    "default": true
+                },
+                "list": {
+                    "type": "string",
+                    "description": "该选项设定当客户请求可以使用的模块列表时，该模块是否应该被列出。。",
+                    "default": "yes"
+                },
+                "authUsers": {
+                    "type": "string",
+                    "description": "同步点认证用户名，约定：设备序列号。"
+                },
+                "authPassword": {
+                    "type": "string",
+                    "description": "同步点认证密码，约定：设备当前初始化得到的key"
+                },
+                "ignoreErrors": {
+                    "type": "string",
+                    "description": "忽略错误，默认 否。",
+                    "default": "no"
+                },
+                "ignoreNonreadable": {
+                    "type": "string",
+                    "description": "指定rsync服务器完全忽略那些用户没有访问权限的文件，这对于在需要备份的目录中有些文件所不应该被备份者得到的情况下是有意义的。。",
+                    "default": "no"
+                },
+                "选项开启则记录下载和上传操作": {
+                    "type": "string",
+                    "description": "忽略错误，默认 否。",
+                    "default": "no"
                 }
             }
         },
