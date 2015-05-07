@@ -2946,7 +2946,7 @@
                     "200": {
                         "description": "Publish",
                         "schema": {
-                            "$ref": "#/definitions/SyncPointInfo"
+                            "$ref": "#/definitions/ResSyncPointInfo"
                         }
                     },
                     "default": {
@@ -4399,6 +4399,15 @@
                 "syncModule": {
                     "description": "同步点模块，对rsync同步模块的对象封装。",
                     "$ref": "#/definitions/SyncModule"
+                }
+            }
+        },
+        "ResSyncPointInfo": {
+            "properties": {
+                "result": {
+                    "type": "string",
+                    "description": "返回信息结果。",
+                    "$ref": "#/definitions/SyncPointInfo"
                 }
             }
         },
