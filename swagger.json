@@ -205,14 +205,15 @@
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为1，最大值为100。",
                         "required": false,
-                        "type": "integer"
+                        "type": "string",
+                        "format": "integer"
                     },
                     {
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。表示从结果的第几条开始，如果省略默认为1，即从第一条开始。",
                         "required": false,
-                        "type": "int"
+                        "type": "integer"
                     },
                     {
                         "name": "limit",
@@ -270,7 +271,6 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -363,7 +363,6 @@
                         "in": "body",
                         "description": "公司信息。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -493,7 +492,6 @@
                         "in": "body",
                         "description": "公司信息。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Organizationinfo"
                         }
@@ -621,7 +619,6 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -728,7 +725,6 @@
                         "in": "body",
                         "description": "分组信息。(Raw)",
                         "required": false,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/TagInfo"
                         }
@@ -897,7 +893,7 @@
                     },
                     {
                         "name": "resource_id",
-                        "id": "query",
+                        "in": "query",
                         "description": "资源标识。",
                         "required": true,
                         "type": "string"
@@ -1174,7 +1170,6 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceTagsId"
                         }
@@ -1221,7 +1216,6 @@
                         "in": "body",
                         "description": "资源对应ID和对应分组ID。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceTagsId"
                         }
@@ -1466,7 +1460,6 @@
                         "in": "body",
                         "description": "设备信息.",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Devices"
                         }
@@ -1606,7 +1599,6 @@
                         "in": "body",
                         "description": "设备资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -1669,7 +1661,6 @@
                         "in": "body",
                         "description": "设备资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -1802,7 +1793,6 @@
                         "in": "body",
                         "description": "车辆资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -1864,15 +1854,14 @@
                         "name": "file_id",
                         "in": "query",
                         "description": "批量导入数据文件",
-                        "requird": true,
+                        "required": true,
                         "type": "string"
                     },
                     {
                         "name": "publicAttribute",
                         "in": "body",
                         "description": "设备公共属性",
-                        "requird": true,
-                        "type": "object",
+                        "required": true,
                         "schema": {
                             "$ref": "#/definitions/PublicAttribute"
                         }
@@ -1928,7 +1917,6 @@
                         "in": "body",
                         "description": "设备资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -2034,7 +2022,7 @@
                         "name": "cancel_site",
                         "in": "query",
                         "description": "cancel_site =1 则将此设备移除之前所在车辆",
-                        "requeired": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2042,7 +2030,6 @@
                         "in": "body",
                         "description": "设备信息.",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Devices"
                         }
@@ -2148,63 +2135,63 @@
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "limit",
                         "in": "query",
                         "description": "每次请求返回的条目数量。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "name",
                         "in": "query",
                         "description": "要查找的名称。",
-                        "requird": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "address",
                         "in": "query",
                         "description": "要查找的地址。",
-                        "requird": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "online",
                         "in": "query",
                         "description": "是否在线。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "has_gateway",
                         "in": "query",
                         "description": "是否有设备。如果有填写true，没有填写false",
-                        "requird": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "business_state",
                         "in": "query",
                         "description": "业务状态.",
-                        "requird": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "start_time",
                         "in": "query",
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     }
                 ],
@@ -2256,7 +2243,6 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Sites"
                         }
@@ -2311,28 +2297,28 @@
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "limit",
                         "in": "query",
                         "description": "每次请求返回的条目数量。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "name",
                         "in": "query",
                         "description": "要查找的名称。",
-                        "requird": false,
+                        "required": false,
                         "type": "string"
                     },
                     {
                         "name": "online",
                         "in": "query",
                         "description": "是否在线。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
@@ -2346,14 +2332,14 @@
                         "name": "start_time",
                         "in": "query",
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
                         "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "requird": false,
+                        "required": false,
                         "type": "integer"
                     },
                     {
@@ -2361,7 +2347,6 @@
                         "in": "body",
                         "description": "车辆资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -2417,7 +2402,6 @@
                         "in": "body",
                         "description": "设备对象数组。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Alias"
                         }
@@ -2480,7 +2464,6 @@
                         "in": "body",
                         "description": "车辆资源ID，可填写多个。",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -2594,7 +2577,6 @@
                         "in": "body",
                         "description": "车辆信息",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Sites"
                         }
@@ -2889,7 +2871,6 @@
                         "in": "body",
                         "description": "发布点信息",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Publish"
                         }
@@ -2996,7 +2977,6 @@
                         "in": "body",
                         "description": "内容发布点ID",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/BackPublishinfo"
                         }
@@ -3126,7 +3106,6 @@
                         "in": "body",
                         "description": "同步周期时间",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Timedtask"
                         }
@@ -3189,7 +3168,6 @@
                         "in": "body",
                         "description": "更新信息",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Updatejob"
                         }
@@ -3252,7 +3230,6 @@
                         "in": "body",
                         "description": "更新信息",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/Updatejob"
                         }
@@ -3361,7 +3338,6 @@
                         "in": "body",
                         "description": "资源ID",
                         "required": true,
-                        "type": "object",
                         "schema": {
                             "$ref": "#/definitions/ResourceIds"
                         }
@@ -3699,23 +3675,19 @@
                 },
                 "alarmTrapInterval": {
                     "type": "number",
-                    "description": "报警间隔",
-                    "default": ""
+                    "description": "报警间隔"
                 },
                 "alarmTrapTimeout": {
                     "type": "number",
-                    "description": "报警上报超时",
-                    "default": ""
+                    "description": "报警上报超时"
                 },
                 "statusTrapInterval": {
                     "type": "number",
-                    "description": "状态上报周期",
-                    "default": ""
+                    "description": "状态上报周期"
                 },
                 "statusTrapTimeout": {
                     "type": "number",
-                    "description": "状态上报超时",
-                    "default": ""
+                    "description": "状态上报超时"
                 },
                 "eventinterval": {
                     "type": "number",
@@ -4083,7 +4055,7 @@
             "properties": {
                 "total": {
                     "type": "integer",
-                    "dedscription": "结果总数。"
+                    "description": "结果总数。"
                 },
                 "cursor": {
                     "type": "integer",
@@ -4124,9 +4096,7 @@
                 },
                 "resourceId": {
                     "type": "string",
-                    "schema": {
-                        "$ref": "#/definitions/ID"
-                    },
+                    "$ref": "#/definitions/ID",
                     "description": "返回的资源ID"
                 }
             }
@@ -4511,9 +4481,7 @@
                 "syncModule": {
                     "type": "object",
                     "description": "同步点模块，对rsync同步模块的对象封装。",
-                    "schema": {
-                        "$ref": "#/definitions/SyncModule"
-                    }
+                    "$ref": "#/definitions/SyncModule"
                 }
             }
         },
