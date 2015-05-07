@@ -1118,14 +1118,14 @@
                     {
                         "name": "start_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的开始时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的结束时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     }
@@ -1306,14 +1306,14 @@
                     {
                         "name": "start_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的开始时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的结束时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
@@ -1332,316 +1332,6 @@
                         "description": "Devices",
                         "schema": {
                             "$ref": "#/definitions/Devicesresponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/devices/overview": {
-            "post": {
-                "summary": "获取设备列表",
-                "description": "通过分组获取分组下的列表时使用此API。",
-                "tags": [
-                    "Devices"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "cursor",
-                        "in": "query",
-                        "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 0
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "每次请求返回的条目数量。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 30,
-                        "enum": [
-                            30,
-                            50,
-                            100
-                        ]
-                    },
-                    {
-                        "name": "resourceIds",
-                        "in": "body",
-                        "description": "设备资源ID，可填写多个。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devices",
-                        "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/devices/batch_get": {
-            "post": {
-                "summary": "获取多个车辆下的设备列表",
-                "description": "获取多个车辆下的设备列表。",
-                "tags": [
-                    "Devices"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
-                        "required": false,
-                        "type": "string",
-                        "format": "integer",
-                        "default": 100
-                    },
-                    {
-                        "name": "cursor",
-                        "in": "query",
-                        "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 0
-                    },
-                    {
-                        "name": "limit",
-                        "in": "query",
-                        "description": "每次请求返回的条目数量。",
-                        "required": false,
-                        "type": "integer",
-                        "default": 30,
-                        "enum": [
-                            30,
-                            50,
-                            100
-                        ]
-                    },
-                    {
-                        "name": "name",
-                        "in": "query",
-                        "description": "要查找的设备名称。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "online",
-                        "in": "query",
-                        "description": "是否在线",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "plc_id",
-                        "in": "query",
-                        "description": "是否是设备（plc_id=0为设备）",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "model",
-                        "in": "query",
-                        "description": "要查找为此机型的设备",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "serial_number",
-                        "in": "query",
-                        "description": "要查找的设备序列号",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "address",
-                        "in": "query",
-                        "description": "要查找的地址",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "business_state",
-                        "in": "query",
-                        "description": "业务状态 0：建设 1：投运 2：故障 3：检修 （查询多个状态时之间用“，”逗号隔开。如“1,0”“1,2”）",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "name": "start_time",
-                        "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "end_time",
-                        "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "resourceIds",
-                        "in": "body",
-                        "description": "车辆资源ID，可填写多个。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devices",
-                        "schema": {
-                            "$ref": "#/definitions/Devicesresponse"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/devices/batch_add": {
-            "post": {
-                "summary": "批量创建设备",
-                "description": "批量创建设备。",
-                "tags": [
-                    "Devices"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
-                        "required": false,
-                        "type": "string",
-                        "format": "integer",
-                        "default": 100
-                    },
-                    {
-                        "name": "create_site",
-                        "in": "query",
-                        "description": "若携带此参数且值为1则会为每一个设备创建一个默认的车辆，否则创建无车辆的设备",
-                        "required": false,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "file_id",
-                        "in": "query",
-                        "description": "批量导入数据文件",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "publicAttribute",
-                        "in": "body",
-                        "description": "设备公共属性",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/PublicAttribute"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devices",
-                        "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
-                        }
-                    },
-                    "default": {
-                        "description": "Unexpected error",
-                        "schema": {
-                            "$ref": "#/definitions/Error"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/devices/batch_delete": {
-            "post": {
-                "summary": "批量删除设备",
-                "description": "批量删除设备。",
-                "tags": [
-                    "Devices"
-                ],
-                "parameters": [
-                    {
-                        "name": "access_token",
-                        "in": "query",
-                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "verbose",
-                        "in": "query",
-                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
-                        "required": false,
-                        "type": "string",
-                        "format": "integer",
-                        "default": 100
-                    },
-                    {
-                        "name": "resourceIds",
-                        "in": "body",
-                        "description": "设备资源ID，可填写多个。",
-                        "required": true,
-                        "schema": {
-                            "$ref": "#/definitions/ResourceIds"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Devices",
-                        "schema": {
-                            "$ref": "#/definitions/ResultDelorg"
                         }
                     },
                     "default": {
@@ -1674,6 +1364,15 @@
                         "description": "设备标识。",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "delete_site",
+                        "in": "query",
+                        "description": "是否同时删除对应车辆",
+                        "required": false,
+                        "type": "integer",
+                        "enum": [1, 0],
+                        "default": 0
                     }
                 ],
                 "responses": {
@@ -1800,6 +1499,77 @@
                 }
             }
         },
+        "/api/models": {
+            "get": {
+                "summary": "获取机型列表",
+                "description": "获取机型列表",
+                "tags": [
+                    "Model"
+                ],
+                "parameters": [
+                    {
+                        "name": "access_token",
+                        "in": "query",
+                        "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verbose",
+                        "in": "query",
+                        "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
+                        "required": false,
+                        "type": "string",
+                        "format": "integer",
+                        "default": 1
+                    },
+                    {
+                        "name": "cursor",
+                        "in": "query",
+                        "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
+                        "required": false,
+                        "type": "integer",
+                        "default": 0
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "每次请求返回的条目数量。",
+                        "required": false,
+                        "type": "integer",
+                        "default": 30,
+                        "enum": [
+                            30,
+                            50,
+                            100
+                        ]
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "要查找的设备名称。",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Models",
+                        "schema": {
+                            "$ref": "#/definitions/ModelsResponse"
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+
+
         "/api/sites": {
             "get": {
                 "summary": "获取车辆列表",
@@ -1883,14 +1653,14 @@
                     {
                         "name": "start_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的开始时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的结束时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     }
@@ -2028,14 +1798,14 @@
                     {
                         "name": "start_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的开始时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
                     {
                         "name": "end_time",
                         "in": "query",
-                        "description": "告警产生的起始时间戳，单位秒，标准UTC时间。",
+                        "description": "按创建时间查询时的结束时间，单位秒，标准UTC时间。",
                         "required": false,
                         "type": "integer"
                     },
@@ -2993,19 +2763,6 @@
                     "type": "string",
                     "description": "机型。注：更新时忽略请求中的该项参数。必填"
                 },
-                "plcId": {
-                    "type": "integer",
-                    "description": "Plc编号，为0时表示为设备注：创建时带此参数且置0则表示创建设备更新时忽略请求中的该项参数。",
-                    "default": 0
-                },
-                "maxPlcId": {
-                    "type": "integer",
-                    "description": "最大plc编号，[设备设备记录拓扑中plcid的最大值]注：创建/更新时忽略请求中的该项参数。"
-                },
-                "maxSensorId": {
-                    "type": "integer",
-                    "description": "最大sensor编号，[设备设备记录拓扑中sensorId的最大值]注：创建/更新时忽略请求中的该项参数。"
-                },
                 "mobileNumber": {
                     "type": "integer",
                     "description": "SIM卡号码。"
@@ -3047,14 +2804,9 @@
                     "type": "string",
                     "description": "机型标识注：更新时忽略请求中的该项参数。创建设备时必填"
                 },
-                "vendorId": {
-                    "type": "integer",
-                    "description": "厂商编号 inhand设备默认为3",
-                    "default": 3
-                },
                 "priIp": {
                     "type": "string",
-                    "description": "设备私网ip (创建设备时指定)"
+                    "description": "设备私网ip (创建设备时不指定)"
                 },
                 "pubIp": {
                     "type": "string",
@@ -3062,7 +2814,7 @@
                 },
                 "priPort": {
                     "type": "integer",
-                    "description": "设备私网port (创建设备时指定)"
+                    "description": "设备私网port (创建设备时不指定)"
                 },
                 "pubPort": {
                     "type": "integer",
@@ -3076,32 +2828,6 @@
                     "type": "integer",
                     "description": "同步状态 参见设备动态信息数据结构定义"
                 },
-                "config": {
-                    "type": "object",
-                    "description": "配置信息",
-                    "properties": {
-                        "timeout": {
-                            "type": "number",
-                            "default": 300000,
-                            "description": "连接超时时间"
-                        },
-                        "ackTimeout": {
-                            "type": "number",
-                            "default": 120000,
-                            "description": "设备响应超时时间"
-                        },
-                        "ackRetries": {
-                            "type": "number",
-                            "default": 3,
-                            "description": "设备最大重传次数"
-                        },
-                        "sync": {
-                            "type": "number",
-                            "default": 2,
-                            "description": "配置同步准则2以设备同步为主1以平台同步为主0忽略"
-                        }
-                    }
-                },
                 "location": {
                     "type": "object",
                     "description": "位置信息",
@@ -3113,32 +2839,6 @@
                         "latitude": {
                             "type": "number",
                             "description": "纬度"
-                        }
-                    }
-                },
-                "deviceconfig": {
-                    "type": "object",
-                    "description": "设备的配置属性",
-                    "properties": {
-                        "heartbeatTimeout": {
-                            "type": "integer",
-                            "description": "心跳超时",
-                            "default": 10
-                        },
-                        "resendLogin": {
-                            "type": "integer",
-                            "description": "重新登陆间隔",
-                            "default": 60
-                        },
-                        "maxHeartbeatLost": {
-                            "type": "integer",
-                            "description": "最大心跳丢失次数",
-                            "default": 6
-                        },
-                        "heartbeatInterval": {
-                            "type": "integer",
-                            "description": "心跳间隔",
-                            "default": 120
                         }
                     }
                 },
@@ -3430,6 +3130,29 @@
                 "shared": {
                     "type": "boolean",
                     "description": "是否共享。"
+                }
+            }
+        },
+        "ModelsResponse": {
+            "properties": {
+                "total": {
+                    "type": "integer",
+                    "description": "结果总数。"
+                },
+                "cursor": {
+                    "type": "integer",
+                    "description": "游标。表示从结果的第几条开始。"
+                },
+                "limit": {
+                    "type": "integer",
+                    "description": "返回的结果数目。"
+                },
+                "result": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Model"
+                    },
+                    "description": "返回的分组对象信息。"
                 }
             }
         },
@@ -4260,6 +3983,27 @@
                     "type": "string",
                     "description": "该选项开启则记录下载和上传操作。",
                     "default": "no"
+                }
+            }
+        },
+        "Model": {
+            "description": "机型数据定义，此处只列出了部分属性，未列出的可不需了解",
+            "properties": {
+                "_id": {
+                    "type": "string",
+                    "description": "机型标识。"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "机型名称"
+                },
+                "createTime": {
+                    "type": "integer",
+                    "description": "创建时间, UnixTime"
+                },
+                "updateTime": {
+                    "type": "integer",
+                    "description": "更新时间, UnixTime"
                 }
             }
         },
