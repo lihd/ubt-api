@@ -160,14 +160,8 @@
                         "description": "OAuth2授权后获得 注：通过HTTP认证头携带时省略。注：对应角色---超级管理员。",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。",
-                        "required": true,
-                        "type": "string"
                     }
+
                 ],
                 "responses": {
                     "200": {
@@ -1045,13 +1039,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
@@ -1182,13 +1169,6 @@
                         "default": 100
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "create_site",
                         "in": "query",
                         "description": "若create_site=1 且$DeviceInfo里面无车辆信息，自动创建车辆，若create_site=0不会自动创建车辆。",
@@ -1245,13 +1225,6 @@
                         "type": "string",
                         "format": "integer",
                         "default": 100
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
                     },
                     {
                         "name": "cursor",
@@ -1386,13 +1359,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "cursor",
                         "in": "query",
                         "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
@@ -1452,13 +1418,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -1966,13 +1925,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
@@ -2020,13 +1972,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2358,13 +2303,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
@@ -2417,13 +2355,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2482,13 +2413,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "verbose",
                         "in": "query",
                         "description": "信息详细级别。该参数值越大表示要求提供的信息越详细，默认值为100，最小值为1最大值为100。",
@@ -2534,13 +2458,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2591,13 +2508,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2670,13 +2580,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
                         "name": "publishPointName",
                         "in": "query",
                         "description": "发布点名称。",
@@ -2724,13 +2627,7 @@
                         "required": true,
                         "type": "string"
                     },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
-                        "type": "string"
-                    },
+
                     {
                         "name": "publishPointName",
                         "in": "query",
@@ -2784,13 +2681,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -2948,13 +2838,6 @@
                         "in": "query",
                         "description": "OAuth2授权后获得。注：通过HTTP认证头携带时省略。",
                         "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "oid",
-                        "in": "query",
-                        "description": "公司标识。仅系统用户在调用时可以指定，默认为与access_token关联的用户所属公司相同。",
-                        "required": false,
                         "type": "string"
                     },
                     {
@@ -4133,6 +4016,43 @@
                 "tarPath": {
                     "type": "string",
                     "description": "文件同步路径。"
+                }
+            }
+        },
+        "PublicAttribute": {
+            "properties": {
+                "publicAttribute": {
+                    "type": "object",
+                    "description": "添加设备的公共属性。",
+                    "properties": {
+                        "modelId": {
+                            "type": "string",
+                            "description": "机型ID"
+                        },
+                        "location": {
+                            "description": "位置信息。",
+                            "properties": {
+                                "region": {
+                                    "type": "string",
+                                    "default": null,
+                                    "description": "所属地区。"
+                                },
+                                "longitude": {
+                                    "type": "string",
+                                    "description": "经度。"
+                                },
+                                "latitude": {
+                                    "type": "string",
+                                    "description": "纬度。"
+                                }
+                            }
+                        },
+                        "vendorId": {
+                            "type": "integer",
+                            "description": "厂商标识，3为映翰通",
+                            "default": 3
+                        }
+                    }
                 }
             }
         },
