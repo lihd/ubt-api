@@ -209,7 +209,8 @@
                         "in": "query",
                         "description": "游标。表示从结果的第几条开始，如果省略默认为0，即从第一条开始。",
                         "required": false,
-                        "type": "integer",
+                        "type": "string",
+                        "format": "integer",
                         "default": 0
                     },
                     {
@@ -379,7 +380,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organization"
+                            "$ref": "#/definitions/ResultOrg"
                         }
                     },
                     "default": {
@@ -425,7 +426,7 @@
                     "200": {
                         "description": "Organization",
                         "schema": {
-                            "$ref": "#/definitions/Organization"
+                            "$ref": "#/definitions/ResultOrg"
                         }
                     },
                     "default": {
@@ -3625,9 +3626,70 @@
                 "result": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Organization"
+                        "$ref": "#/definitions/OrganizationRe"
                     },
                     "description": "返回的公司对象信息"
+                }
+            }
+        },
+        "OrganizationRe": {
+            "properties": {
+                "owner": {
+                    "type": "string",
+                    "description": "拥有者ID。",
+                    "example": "554C5F776D7EB52AB00003EF"
+                },
+                "state": {
+                    "type": "integer",
+                    "description": "公司状态。",
+                    "default": 1
+                },
+                "updateTime": {
+                    "type": "string",
+                    "description": "更新公司信息时间。",
+                    "example": 1431068535
+                },
+                "createTime": {
+                    "type": "string",
+                    "description": "创建公司时间。",
+                    "example": 1431068535
+                },
+                "name": {
+                    "type": "string",
+                    "description": "公司名称。",
+                    "example": "inhand"
+                },
+                "email": {
+                    "type": "string",
+                    "description": "公司联系邮箱。",
+                    "example": "emailw@your-company.com"
+                },
+                "phone": {
+                    "type": "string",
+                    "description": "公司联系电话。"
+                },
+                "website": {
+                    "type": "string",
+                    "description": "公司网址。",
+                    "example": "www.your-company.com"
+                },
+                "fax": {
+                    "type": "string",
+                    "description": "公司传真。"
+                },
+                "address": {
+                    "type": "string",
+                    "description": "公司地址。"
+                },
+                "creator": {
+                    "type": "string",
+                    "description": "创建者。",
+                    "example": "www.your-company.com"
+                },
+                "_id": {
+                    "type": "string",
+                    "description": "标识。",
+                    "example": "554C5F776D7EB52AB00003E8"
                 }
             }
         },
@@ -3636,7 +3698,7 @@
                 "result": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/Organization"
+                        "$ref": "#/definitions/OrganizationRe"
                     },
                     "description": "返回的公司对象信息"
                 }
@@ -3656,7 +3718,8 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "资源标识。"
+                    "description": "资源标识。",
+                    "example": "555023456D7EB52AB000041D"
                 }
             }
         },
