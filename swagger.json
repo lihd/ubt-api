@@ -2076,7 +2076,7 @@
                     {
                         "name": "file",
                         "in": "formData",
-                        "description": "上传文件。",
+                        "description": "上传文件,上传之前检查压缩文件结构避免上传到设备后无法正常访问，暂时支持zip格式。",
                         "required": true,
                         "type": "file"
                     },
