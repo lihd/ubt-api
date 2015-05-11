@@ -2067,7 +2067,7 @@
                     "Publish"
                 ],
                 "consumes": [
-                    "application/octet-stream"
+                    "application/json"
                 ],
                 "produces": [
                     "application/octet-stream"
