@@ -2662,15 +2662,18 @@
             "properties": {
                 "access_token": {
                     "type": "string",
-                    "description": "访问令牌"
+                    "description": "访问令牌",
+                    "example": "1347c774c5ff6f9500837b216a648c0b"
                 },
                 "refresh_token": {
                     "type": "string",
-                    "description": "刷新令牌"
+                    "description": "刷新令牌",
+                    "example": "d6cd62a47f1887b731530f0def345657"
                 },
                 "expires_ins": {
                     "type": "integer",
-                    "description": "过期时间(秒)"
+                    "description": "过期时间(秒)",
+                    "default": 3600
                 }
             }
         },
