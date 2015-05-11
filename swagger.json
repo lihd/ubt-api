@@ -2682,27 +2682,33 @@
             "properties": {
                 "oid": {
                     "type": "string",
-                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "公司标识。注：创建/更新时忽略请求中的该项参数。",
+                    "example": "54BE06B86D7EB57A23000001"
                 },
                 "_id": {
                     "type": "string",
-                    "description": "机型标识。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "机型标识。注：创建/更新时忽略请求中的该项参数。",
+                    "example": "5546E1656D7EB5287200032E"
                 },
                 "name": {
                     "type": "string",
-                    "description": "分组名称"
+                    "description": "分组名称",
+                    "example": "tag"
                 },
                 "shared": {
                     "type": "boolean",
-                    "description": "是否共享。"
+                    "description": "是否共享。",
+                    "example": true
                 },
                 "owner": {
                     "type": "string",
-                    "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。"
+                    "description": "拥有者标识。注：创建/更新时忽略请求中的该项参数。",
+                    "example": "54BE06B86D7EB57A23000007"
                 },
                 "updateTime": {
-                    "type": "integer",
-                    "description": "创建或更新时间。注：创建/更新时忽略请求中的该项参数。"
+                    "type": "string",
+                    "description": "创建或更新时间。注：创建/更新时忽略请求中的该项参数。",
+                    "example": 1430709463
                 }
             }
         },
@@ -3215,23 +3221,28 @@
             "properties": {
                 "tagName": {
                     "type": "string",
-                    "description": "分组名称"
+                    "description": "分组名称",
+                    "example": "tag"
                 },
                 "resourceType": {
                     "type": "integer",
-                    "description": "资源类型"
+                    "description": "资源类型",
+                    "example": 1
                 },
                 "resourceId": {
                     "type": "string",
-                    "description": "资源标识"
+                    "description": "资源标识",
+                    "example": "55407BFE6D7EB535B20000AB"
                 },
                 "tagId": {
                     "type": "string",
-                    "description": "分组标识"
+                    "description": "分组标识",
+                    "example": "55407BFE6D7EB535B20000AB"
                 },
                 "_id": {
                     "type": "string",
-                    "description": ""
+                    "description": "",
+                    "example": "55407BFE6D7EB535B20000AB"
                 }
             }
         },
@@ -3249,7 +3260,8 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "分组ID可填写多个。"
+                    "description": "分组ID可填写多个。",
+                    "example": "55407BFE6D7EB535B20000AB"
                 }
             }
         },
@@ -3268,15 +3280,18 @@
             "properties": {
                 "id": {
                     "type": "string",
-                    "description": "资源对应ID."
+                    "description": "资源对应ID.",
+                    "example": "55407BFE6D7EB535B20000AB"
                 },
                 "name": {
                     "type": "string",
-                    "description": "资源名称。"
+                    "description": "资源名称。",
+                    "example": "name"
                 },
                 "type": {
                     "type": "string",
-                    "description": "资源类型。"
+                    "description": "资源类型。",
+                    "example": 1
                 }
             }
         },
