@@ -2067,12 +2067,19 @@
                     "Publish"
                 ],
                 "consumes": [
-                    "application/json"
+                    "multipart/form-data"
                 ],
                 "produces": [
                     "application/octet-stream"
                 ],
                 "parameters": [
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "上传文件。",
+                        "required": true,
+                        "type": "file"
+                    },
                     {
                         "name": "access_token",
                         "in": "query",
