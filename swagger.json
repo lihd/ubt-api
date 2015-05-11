@@ -2070,7 +2070,7 @@
                     "application/octet-stream"
                 ],
                 "produces": [
-                    "application/json"
+                    "application/octet-stream"
                 ],
                 "parameters": [
                     {
