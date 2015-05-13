@@ -191,7 +191,7 @@
                     {
                         "name": "access_token",
                         "in": "query",
-                        "description": "OAuth2授权后获得 注：通过HTTP认证头携带时省略。注：对应角色---超级管理员。",
+                        "description": "OAuth2授权后获得注：通过HTTP认证头携带时省略。注：对应角色---超级管理员。",
                         "required": true,
                         "type": "string"
                     },
